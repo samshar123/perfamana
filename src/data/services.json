@@ -1,0 +1,41 @@
+{
+  "services": [
+    {
+      "id": "bodyshop",
+      "title": "BODYSHOP",
+      "shortDesc": "Structural integrity meets aesthetic perfection. Expert dent repair and precision paint matching.",
+      "thumbnail": "../../../../public/Images/about/IMG_2751.jpg",
+      "path": "/services/bodyshop",
+      "detailedImages": [],
+      "fullSpecs": ""
+    },
+    {
+      "id": "detailing",
+      "title": "DETAILING",
+      "shortDesc": "Multi-stage correction and ceramic armor. We don't just clean; we preserve the factory finish.",
+      "thumbnail": "https://images.unsplash.com/photo-1607860108855-64acf2078ed9?q=80&w=800",
+      "path": "/services/detailing"
+    },
+    {
+      "id": "facelift",
+      "title": "FACELIFT",
+      "shortDesc": "Update your machine's soul. Conversion kits and modern lighting systems for legacy models.",
+      "thumbnail": "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?q=80&w=800",
+      "path": "/services/facelift"
+    },
+    {
+      "id": "restoration",
+      "title": "RESTORATION",
+      "shortDesc": "Bringing legends back to life. Nut-and-bolt restoration with period-correct accuracy.",
+      "thumbnail": "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=800",
+      "path": "/services/restoration"
+    },
+    {
+      "id": "interior",
+      "title": "INTERIOR CUSTOMS",
+      "shortDesc": "Bespoke cabins tailored to your touch. Italian leather, carbon fiber, and Alcantara finishes.",
+      "thumbnail": "https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=800",
+      "path": "/services/interior"
+    }
+  ]
+}

@@ -1,0 +1,158 @@
+.nav-viewport {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100px;
+  z-index: 999;
+  padding: 0 5%;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s;
+}
+
+.nav-hidden { transform: translateY(-100%); opacity: 0; }
+
+.nav-container {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+ border: none;
+}
+
+
+.nav-logo {
+  text-decoration: none;
+  display: block;
+  z-index: 10;
+}
+
+.logo-wrapper {
+  position: relative;
+  height: 50px; /* Adjust based on your logo's proportions */
+  display: flex;
+  align-items: center;
+  overflow: hidden; /* Clips the scanner line to the logo area */
+  padding: 5px;
+}
+
+.main-logo-img {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s;
+  /* Keeps the logo sharp and slightly 'industrial' */
+  filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.1));
+}
+
+/* --- THE CREATIVE SCANNER EFFECT --- */
+.logo-scanner {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg, 
+    transparent, 
+    rgba(227, 24, 55, 0.4), 
+    transparent
+  );
+  transform: skewX(-20deg);
+  pointer-events: none;
+}
+
+.nav-logo:hover .logo-scanner {
+  animation: logoScan 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-logo:hover .main-logo-img {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 15px rgba(227, 24, 55, 0.3));
+}
+
+@keyframes logoScan {
+  0% { left: -100%; }
+  100% { left: 200%; }
+}
+
+/* --- RESPONSIVE ADJUSTMENT --- */
+@media (max-width: 768px) {
+  .logo-wrapper {
+    height: 35px; /* Smaller logo for mobile HUD */
+  }
+}
+/* --- LOGO DESIGN --- */
+.nav-logo { text-decoration: none; display: flex; align-items: center; gap: 15px; }
+
+.logo-hex {
+  width: 45px; height: 45px; background: var(--red);
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  display: flex; align-items: center; justify-content: center;
+}
+
+.logo-letter { color: #fff; font-family: 'Orbitron'; font-weight: 900; font-size: 1.2rem; }
+.logo-text-group { display: flex; flex-direction: column; }
+.logo-main { color: #fff; font-family: 'Orbitron'; font-weight: 900; font-size: 1.1rem; letter-spacing: 2px; }
+.logo-sub { color: #555; font-size: 0.5rem; letter-spacing: 3px; font-family: 'Orbitron'; }
+
+/* --- DESKTOP LINKS --- */
+.nav-desktop-links { display: flex; gap: 35px; }
+
+.nav-link-item {
+  position: relative; text-decoration: none; display: flex; flex-direction: column; padding: 10px 0;
+}
+
+.link-index { font-family: 'Orbitron'; font-size: 0.5rem; color: var(--red); margin-bottom: 2px; }
+.link-text { font-family: 'Orbitron'; font-size: 0.75rem; font-weight: 900; color: #dfdfdf; letter-spacing: 2px; transition: 0.3s; }
+
+.nav-link-item:hover .link-text, .nav-link-item.active .link-text { color: #fff; }
+
+/* --- MOBILE TRIGGER --- */
+.nav-trigger { background: none; border: none; cursor: pointer; display: none; }
+.trigger-box { display: flex; flex-direction: column; gap: 6px; align-items: flex-end; }
+.trigger-line { width: 30px; height: 2px; background: #fff; transition: 0.3s; }
+.trigger-line.short { width: 15px; background: var(--red); }
+
+/* --- MOBILE OVERLAY & CLOSE --- */
+.mobile-system-overlay {
+  position: fixed; inset: 0; background: #080808; z-index: 2000;
+  display: flex; flex-direction: column; padding: 60px 10%;
+}
+
+.mobile-close-btn {
+  position: absolute; top: 40px; right: 40px;
+  background: none; border: none; cursor: pointer;
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+}
+
+.close-circle {
+  width: 60px; height: 60px; border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  transition: 0.4s;
+}
+
+.close-x {
+  position: relative; width: 25px; height: 25px;
+}
+.close-x::before, .close-x::after {
+  content: ''; position: absolute; top: 50%; left: 0; width: 100%; height: 2px;
+  background: var(--red);
+}
+.close-x::before { transform: rotate(45deg); }
+.close-x::after { transform: rotate(-45deg); }
+
+.mobile-close-btn:hover .close-circle { border-color: var(--red); transform: rotate(90deg); }
+.close-label { font-family: 'Orbitron'; color: #444; font-size: 0.5rem; letter-spacing: 2px; }
+
+/* --- MOBILE LINKS --- */
+.mobile-nav-content { margin-top: 80px; }
+.mobile-meta { font-family: 'Orbitron'; color: var(--red); font-size: 0.7rem; letter-spacing: 5px; margin-bottom: 40px; }
+.mobile-link-list { display: flex; flex-direction: column; gap: 30px; }
+.mobile-link-anchor { text-decoration: none; display: flex; align-items: baseline; gap: 20px; }
+.m-index { font-family: 'Orbitron'; color: #222; font-size: 1.5rem; font-weight: 900; }
+.m-text { font-family: 'Orbitron'; color: #fff; font-size: 3rem; font-weight: 900; transition: 0.3s; }
+.mobile-link-anchor:hover .m-text { color: var(--red); transform: translateX(20px); }
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .nav-desktop-links { display: none; }
+  .nav-trigger { display: block; }
+  .m-text { font-size: 2.5rem; }
+}

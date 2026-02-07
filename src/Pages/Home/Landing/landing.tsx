@@ -1,76 +1,141 @@
-import React from 'react';
-import { motion, type Variants } from 'framer-motion'; // Added the 'type' keyword here
-import { ChevronRight } from 'lucide-react';
-import './landing.css';
+import React, { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import img1 from "../../../../public/Images/Home/ford1-Photoroom.png";
+import img2 from "../../../../public/Images/Home/ford2.png";
+import img3 from "../../../../public/Images/Home/polo2.png";
+import img4 from "../../../../public/Images/Home/polo1.png";
+import "./landing.css";
+
+const carData = [
+  {
+    id: "01",
+    title: "TRANSFORMING",
+    desc: "CARS SINCE 2017",
+    baseImg: img3,
+    darkImg: img4,
+  },
+  {
+    id: "02",
+    title: "ENGINEERING",
+    desc: "720HP PERFORMANCE UNLOCKED",
+    baseImg: img1,
+    darkImg: img2,
+  },
+  {
+    id: "03",
+    title: "AESTHETICS",
+    desc: "SATIN STEALTH FINISH LABS",
+    baseImg: img1,
+    darkImg: img2,
+  },
+];
 
 const Landing: React.FC = () => {
-  // 1. Define the Parent animation (controls the stagger)
-  const containerVariants: Variants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { 
-        staggerChildren: 0.3, 
-        delayChildren: 0.2 
-      },
-    },
-  };
+  const [index, setIndex] = useState(0);
+  const viewportRef = useRef<HTMLDivElement>(null);
 
-  // 2. Define the Child animation (how each element slides in)
-  const itemVariants: Variants = {
-    hidden: { opacity: 0, x: -30 },
-    visible: { 
-      opacity: 1, 
-      x: 0, 
-      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } 
-    },
+  // Set initial 50/50 split on mount
+  useEffect(() => {
+    if (viewportRef.current) {
+      viewportRef.current.style.setProperty("--split", "50%");
+    }
+  }, []);
+
+  useEffect(() => {
+    const timer = setInterval(() => setIndex((p) => (p + 1) % carData.length), 5000);
+    return () => clearInterval(timer);
+  }, []);
+
+  // Controls the scan via the slider only
+  const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = e.target.value;
+    viewportRef.current?.style.setProperty("--split", `${val}%`);
   };
 
   return (
-    <section className="landing-section">
-      <div className="landing-visual-anchor">
-        <div className="accent-shape"></div>
+    <section ref={viewportRef} className="pf-viewport">
+        
+      {/* RICH MECHANICAL BACKGROUND GRAPHICS */}
+      <div className="aniamtiondivlanfing">
+        <div className="power-core">
+          <div className="core-sector s-1"></div>
+          <div className="core-sector s-2"></div>
+          <div className="core-sector s-3"></div>
+        </div>
+        <div className="industrial-frame top-right"></div>
+        <div className="industrial-frame bottom-left"></div>
+        <div className="tech-block b-1"><span>UNIT_720</span></div>
+        <div className="tech-block b-2"><span>LAB_04</span></div>
       </div>
 
-      {/* The Parent motion element */}
-      <motion.div 
-        className="landing-wrapper"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        {/* The Children motion elements */}
-        <motion.div variants={itemVariants} className="landing-kicker">
-          <span className="kicker-line"></span>
-          PREMIUM AUTO LABS
+      <div className="pf-grid-bg"></div>
+      <div className="pf-watermark">PERFAMANA</div>
+
+   
+
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={index}
+          className="pf-stage"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3, ease: "easeInOut" }}
+        >
+          {/* LAYER 1: LIGHT MODE */}
+          <div className="pf-layer light-mode">
+            <div className="pf-container">
+              <h1 className="pf-title">{carData[index].title}</h1>
+              <p className="pf-desc">{carData[index].desc}</p>
+              <div className="pf-img-box">
+                <img src={carData[index].baseImg} alt="Base" />
+              </div>
+            </div>
+          </div>
+
+          {/* LAYER 2: DARK MODE (REVEAL) */}
+          <div className="pf-layer dark-mode">
+            <div className="pf-container">
+              <h1 className="pf-title stroke-red">{carData[index].title}</h1>
+              <p className="pf-desc red-text">{carData[index].desc}</p>
+              <div className="pf-img-box">
+                <img src={carData[index].darkImg} className="neon-saturate" alt="Reveal" />
+              </div>
+            </div>
+          </div>
         </motion.div>
+      </AnimatePresence>
 
-        <motion.h1 variants={itemVariants} className="landing-hero-text">
-          PERFA<span className="text-highlight">MANA</span>
-        </motion.h1>
-
-        <motion.div variants={itemVariants} className="landing-info">
-          <p>
-            Experience the next level of automotive excellence in <strong>Calicut</strong>. 
-            We specialize in high-end wraps, performance tuning, and bespoke body kits.
-          </p>
-        </motion.div>
-
-        <motion.div variants={itemVariants} className="landing-actions">
-          <button className="btn-main">
-            VIEW BUILDS <ChevronRight size={18} />
-          </button>
-          <button className="btn-ghost">
-            GET IN TOUCH
-          </button>
-        </motion.div>
-      </motion.div>
-
-      <div className="landing-side-info">
-        <span>ESTD 2026</span>
-        <div className="vertical-bar"></div>
-        <span>KERALA</span>
+      <div className="pf-scanner-blade">
+        <div className="scanner-glow">
+            
+        </div>
       </div>
+
+      {/* GLOBAL SLIDER CONTROL (Desktop & Mobile) */}
+      <div className="slider-control-wrapper">
+        <input 
+          type="range" 
+          min="0" 
+          max="100" 
+          
+          
+          defaultValue="50" 
+          className="xray-slider-input"
+          onChange={handleSliderChange}
+        />
+       
+      </div>
+
+      <footer className="pf-ui pf-footer">
+        <div className="pf-dots">
+            
+          {carData.map((_, i) => (
+            <div key={i} className={`dot ${index === i ? "active" : ""}`} />
+          ))}
+        </div>
+        <div className="pf-loc">CALICUT // KERALA</div>
+      </footer>
     </section>
   );
 };

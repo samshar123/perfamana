@@ -1,0 +1,68 @@
+{
+  "projects": [
+    {
+      "id": "stealth-gtr",
+      "title": "STEALTH GTR REBUILD",
+      "description": "Full aerodynamic carbon conversion and Stage 3 ECU remapping for track-ready performance.",
+      "oldImage": "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?q=80&w=1200",
+      "newImage": "https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1200",
+      "path": "/projects/stealth-gtr",
+      "category": "PERFORMANCE",
+      "testimonial": {
+        "content": "The attention to detail in the carbon fiber work is unlike anything I've seen in Kerala. Pure mechanical art.",
+        "name": "Arjun Das",
+        "designation": "Professional Racer",
+        "stars": 5,
+        "avatar": "https://i.pravatar.cc/150?u=arjun"
+      }
+    },
+    {
+      "id": "vintage-911-restore",
+      "title": "NEO-CLASSIC RESTORATION",
+      "description": "A nut-and-bolt restoration of a classic silhouette, integrated with modern suspension and LED optics.",
+      "oldImage": "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=1200",
+      "newImage": "https://images.unsplash.com/photo-1583121274602-3e2820c69888?q=80&w=1200",
+      "path": "/projects/vintage-911-restore",
+      "category": "RESTORATION",
+      "testimonial": {
+        "content": "They didn't just fix the car; they preserved its soul while making it drive like a 2026 model. Incredible.",
+        "name": "Rahul Menon",
+        "designation": "Collector",
+        "stars": 5,
+        "avatar": "https://i.pravatar.cc/150?u=rahul"
+      }
+    },
+    {
+      "id": "obsidian-interior",
+      "title": "OBSIDIAN CABIN CUSTOMS",
+      "description": "Complete interior overhaul featuring hand-stitched Alcantara, forged carbon inserts, and ambient fiber optics.",
+      "oldImage": "https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=1200",
+      "newImage": "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?q=80&w=1200",
+      "path": "/projects/obsidian-interior",
+      "category": "INTERIOR",
+      "testimonial": {
+        "content": "The interior feels more luxurious than a private jet. The craftsmanship is world-class.",
+        "name": "Sarah Zakaria",
+        "designation": "Architect",
+        "stars": 5,
+        "avatar": "https://i.pravatar.cc/150?u=sarah"
+      }
+    },
+    {
+      "id": "facelift-defender",
+      "title": "DEFENDER MATRIX FACELIFT",
+      "description": "Legacy-to-Modern conversion. Matrix LED system integration and aggressive wide-body paneling.",
+      "oldImage": "https://images.unsplash.com/photo-1589134707010-859424e8d35f?q=80&w=1200",
+      "newImage": "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?q=80&w=1200",
+      "path": "/projects/facelift-defender",
+      "category": "MODIFICATION",
+      "testimonial": {
+        "content": "The conversion is seamless. People honestly think I bought the newest model from the showroom.",
+        "name": "Irfan Khan",
+        "designation": "Entrepreneur",
+        "stars": 5,
+        "avatar": "https://i.pravatar.cc/150?u=irfan"
+      }
+    }
+  ]
+}
