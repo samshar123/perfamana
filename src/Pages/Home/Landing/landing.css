@@ -88,7 +88,7 @@
 
 .dark-mode { background: var(--black); z-index: 5; clip-path: inset(0 0 0 var(--split)); }
 
-/* --- THE SCANNER BLADE --- */
+
 .pf-scanner-blade {
   position: absolute;
   top: 0; bottom: 0;
@@ -99,7 +99,6 @@
   box-shadow: 0 0 30px var(--red);
   transform: translateX(-50%);
 }
-
 /* --- NEW GLOBAL SLIDER STYLING --- */
 .slider-control-wrapper {
   position: absolute;

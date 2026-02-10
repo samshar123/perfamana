@@ -1,0 +1,65 @@
+{
+  "brands": [
+    {
+      "id": "bmw",
+      "name": "BMW",
+      "logo": "../../../../public/Images/Brands/BMW.svg",
+      "models": [
+        { "name": "M3", "offers": ["Track Prep Package - 20% Off"] },
+        { "name": "330i", "offers": ["Brake Upgrade Kit Special"] },
+        { "name": "X5", "offers": [] }
+      ]
+    },
+    {
+      "id": "ferrari",
+      "name": "Ferrari",
+      "logo": "../../../../public/Images/Brands/Ferrari-Logo.png",
+      "models": [
+        { "name": "488 Pista", "offers": ["Aerodynamic Calibration"] },
+        { "name": "F8 Tributo", "offers": ["Stage 1 Power Pack"] }
+      ]
+    },
+    {
+      "id": "mercedes",
+      "name": "Mercedes-AMG",
+      "logo": "../../../../public/Images/Brands/Mercedes.png",
+      "models": [
+        { "name": "C63", "offers": ["Downpipe + Map Combo"] },
+        { "name": "A45", "offers": ["Intercooler Upgrade Discount"] }
+      ]
+    },
+    {
+      "id": "lamborghini",
+      "name": "Lamborghini",
+      "logo": "../../../../public/Images/Brands/lamborghini.svg",
+      "models": [
+        { "name": "Aventador", "offers": ["V12 Optimized Mapping"] },
+        { "name": "Huracan", "offers": ["Transmission Speed Tune"] }
+      ]
+    },
+    {
+      "id": "mitsubishi",
+      "name": "Mitsubishi",
+      "logo": "../../../../public/Images/Brands/mistibushi.png",
+      "models": [
+        { "name": "Lancer Evo", "offers": ["Turbo Timing Calibration"] }
+      ]
+    },
+    {
+      "id": "volvo",
+      "name": "Volvo",
+      "logo": "../../../../public/Images/Brands/volvo.svg",
+      "models": [
+        { "name": "S60", "offers": ["Polestar Optimization Pack"] }
+      ]
+    },
+    {
+      "id": "porsche",
+      "name": "Porsche",
+      "logo": "../../../../public/Images/Brands/porche.svg",
+      "models": [
+        { "name": "911", "offers": ["Aero Kit Installation Promo"] }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,138 @@
+.fs-section {
+  background: #000;
+  height: 250px; /* Extremely short height */
+  border-top: 1px solid #111;
+  border-bottom: 1px solid #111;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.fs-container {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 80px;
+}
+
+/* LEFT INFO PANEL */
+.fs-info-panel {
+  flex-shrink: 0;
+  width: 300px;
+}
+
+.fs-glitch-text {
+  font-family: 'Orbitron';
+  font-size: 0.55rem;
+  color: var(--red);
+  letter-spacing: 5px;
+  margin-bottom: 10px;
+}
+
+.fs-main-heading {
+  font-family: 'Orbitron';
+  font-size: 1.5rem;
+  color: #fff;
+  line-height: 1.1;
+  font-weight: 900;
+}
+
+.fs-meter {
+  width: 100px;
+  height: 2px;
+  background: #111;
+  margin-top: 20px;
+  position: relative;
+}
+
+.fs-meter-fill {
+  position: absolute;
+  height: 100%;
+  width: 40%;
+  background: var(--red);
+  box-shadow: 0 0 10px var(--red);
+}
+
+/* RIGHT FILMSTRIP WRAP */
+.fs-filmstrip-wrap {
+  flex: 1;
+  height: 200px;
+  mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+  overflow: hidden;
+}
+
+.fs-filmstrip-track {
+  display: flex;
+  gap: 30px;
+  width: max-content;
+  animation: slideBrands 20s linear infinite;
+}
+
+.fs-item {
+  width: 200px;
+  height: 120px;
+  background: #080808;
+  border: 1px solid #151515;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: 0.3s;
+}
+
+.fs-hex-bracket {
+  position: absolute;
+  inset: 5px;
+  border: 1px solid rgba(227, 24, 55, 0.05);
+  pointer-events: none;
+}
+
+.fs-logo {
+  max-width: 100px;
+  height: 60px;
+ 
+  transition: 0.5s;
+}
+
+.fs-serial {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-family: 'Orbitron';
+  font-size: 0.4rem;
+  color: #222;
+}
+
+/* HOVER EFFECTS */
+.fs-item:hover {
+  background: #0c0c0c;
+  border-color: var(--red);
+  transform: scale(1.05);
+}
+
+.fs-item:hover .fs-logo {
+  filter: grayscale(0) brightness(1);
+}
+
+.fs-item:hover .fs-serial {
+  color: var(--red);
+}
+
+/* ANIMATIONS */
+@keyframes slideBrands {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+  .fs-container { flex-direction: column; align-items: flex-start; gap: 30px; }
+  .fs-section { height: auto; padding: 40px 0; }
+  .fs-filmstrip-wrap { width: 100%; }
+}

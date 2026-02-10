@@ -1,0 +1,169 @@
+.ign-viewport {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: #000;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* --- THE VIDEO & POSTER --- */
+.ign-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Darken the screenshot/video initially */
+  filter: grayscale(1) brightness(1) contrast(1.0);
+  transition: 1s cubic-bezier(0.19, 1, 0.22, 1);
+  z-index: 1;
+}
+
+.active-launch .ign-video {
+  filter: grayscale(0) brightness(0.7) contrast(1);
+  transform: scale(1.1);
+}
+
+.ign-bg-giant-text {
+  position: absolute;
+  font-family: 'Syncopate';
+  font-size: 30vw;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.02);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* --- UI CONTENT --- */
+.ign-main-ui {
+  position: relative;
+  z-index: 10;
+  width: 90%;
+  max-width: 1200px;
+}
+
+.ign-top-bar {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.ign-red-dot {
+  width: 10px;
+  height: 100%;
+  height: 10px;
+  background: var(--red);
+  border-radius: 50%;
+  box-shadow: 0 0 15px var(--red);
+  animation: blink 1s infinite;
+}
+
+.ign-terminal-text {
+  font-family: 'Orbitron';
+  font-size: 0.7rem;
+  letter-spacing: 5px;
+  color: var(--red);
+}
+
+.ign-bold-title {
+  font-family: 'Syncopate';
+  font-size: clamp(4rem, 12vw, 10rem);
+  font-weight: 900;
+  line-height: 0.8;
+  letter-spacing: -10px;
+  color: #fff;
+  margin-bottom: 60px;
+}
+
+.text-outline {
+  color: transparent;
+  -webkit-text-stroke: 2px rgba(255, 255, 255, 0.934);
+}
+
+.ign-bottom-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.ign-bold-desc {
+  max-width: 400px;
+  font-family: 'Orbitron';
+  font-size: 0.85rem;
+  line-height: 1.8;
+  color: #555;
+  letter-spacing: 1px;
+}
+
+/* --- TRIGGER BUTTON --- */
+.ign-massive-trigger {
+  position: relative;
+  background: #fff;
+  border: none;
+  padding: 35px 70px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: 0.4s;
+}
+
+.ign-btn-text {
+  position: relative;
+  z-index: 5;
+  font-family: 'Syncopate';
+  font-weight: 900;
+  font-size: 1.3rem;
+  color: #000;
+}
+
+.ign-btn-fill {
+  position: absolute;
+  inset: 0;
+  background: var(--red);
+  transform: translateX(-101%);
+  transition: 0.4s cubic-bezier(0.85, 0, 0.15, 1);
+}
+
+.ign-massive-trigger:hover {
+  transform: scale(1.05) rotate(-2deg);
+}
+
+.ign-massive-trigger:hover .ign-btn-fill {
+  transform: translateX(0);
+}
+
+.ign-massive-trigger:hover .ign-btn-text {
+  color: #fff;
+}
+
+/* --- LAUNCH HUD --- */
+.ign-launch-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(227, 24, 55, 0.1);
+}
+
+.ign-speed-stripe {
+  position: absolute;
+  width: 100%;
+  height: 20vh;
+  background: var(--red);
+  opacity: 0.8;
+}
+
+.ign-launch-text {
+  position: relative;
+  font-family: 'Syncopate';
+  font-size: 6vw;
+  color: #fff;
+  z-index: 101;
+}
+
+@keyframes blink { 50% { opacity: 0.2; } }

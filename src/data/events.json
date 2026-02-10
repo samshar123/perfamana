@@ -1,0 +1,124 @@
+{
+  "events": [
+    {
+      "id": "track-day-2026",
+      "title": "NIGHT_TRACK_SESSIONS",
+      "description": "An exclusive high-performance track event under the floodlights. Open for Stage 2 and above builds for thermal testing and lap timing.",
+      "heroImage": "/Images/Events/event1.jpg",
+      "gallery": ["/Images/Events/track1.jpg", "/Images/Events/track2.jpg"],
+      "date": "MARCH 15, 2026",
+      "time": "18:00 - 23:00",
+      "location": "BIC, GREATER NOIDA",
+      "registrationLink": "https://forms.gle/xyz",
+      "isRegistrationOpen": true
+    },
+    {
+      "id": "carbon-fiber-workshop",
+      "title": "AERO_COMPOSITE_LAB",
+      "description": "A deep dive into advanced aerodynamics and carbon fiber manufacturing. Learn how we reduce drag and optimize downforce for street-legal monsters.",
+      "heroImage": "/Images/Events/event2.jpg",
+      "gallery": ["/Images/Events/aero1.jpg", "/Images/Events/aero2.jpg"],
+      "date": "MARCH 28, 2026",
+      "time": "11:00 - 16:00",
+      "location": "PERFAMANA STUDIO, BANGALORE",
+      "registrationLink": "https://forms.gle/aero-workshop",
+      "isRegistrationOpen": true
+    },
+    {
+      "id": "dyno-meet-kerala",
+      "title": "DYNO_POWER_MEET",
+      "description": "The ultimate power shootout. Test your machine's actual wheel horsepower and torque curves on our calibrated Mustang Dyno.",
+      "heroImage": "/Images/Events/event3.jpg",
+      "gallery": ["/Images/Events/dyno1.jpg"],
+      "date": "APRIL 02, 2026",
+      "time": "10:00 - 17:00",
+      "location": "PERFAMANA LABS, KERALA",
+      "registrationLink": "",
+      "isRegistrationOpen": false
+    },
+    {
+      "id": "ecu-remap-expo",
+      "title": "ALGORITHM_CALIBRATION_DAY",
+      "description": "Live ECU remapping demonstrations. Watch our engineers extract hidden potential while maintaining reliability through precise fuel-air mapping.",
+      "heroImage": "/Images/Events/event4.jpg",
+      "gallery": ["/Images/Events/ecu1.jpg"],
+      "date": "APRIL 18, 2026",
+      "time": "09:00 - 14:00",
+      "location": "HYD_TECH_CENTER",
+      "registrationLink": "https://forms.gle/ecu-expo",
+      "isRegistrationOpen": true
+    },
+    {
+      "id": "midnight-run-mumbai",
+      "title": "COASTAL_MIDNIGHT_RUN",
+      "description": "A strictly invitation-only midnight cruise through the city's quietest tunnels. Built for the sound of high-revving engines and anti-lag pops.",
+      "heroImage": "/Images/Events/event5.jpg",
+      "gallery": ["/Images/Events/run1.jpg", "/Images/Events/run2.jpg"],
+      "date": "MAY 05, 2026",
+      "time": "23:55 - 03:00",
+      "location": "SEALINK, MUMBAI",
+      "registrationLink": "",
+      "isRegistrationOpen": false
+    },
+    {
+      "id": "suspension-tuning-camp",
+      "title": "CHASSIS_DYNAMICS_CAMP",
+      "description": "Understanding weight transfer, body roll, and damping. Bring your car for a professional corner-weighting session and alignment optimization.",
+      "heroImage": "/Images/Events/event6.jpg",
+      "gallery": ["/Images/Events/chassis1.jpg"],
+      "date": "MAY 22, 2026",
+      "time": "08:00 - 18:00",
+      "location": "CHENNAI CIRCUIT ANNEX",
+      "registrationLink": "https://forms.gle/chassis-camp",
+      "isRegistrationOpen": true
+    },
+    {
+      "id": "turbo-induction-seminar",
+      "title": "FORCED_INDUCTION_FORUM",
+      "description": "Technical seminar on turbocharger sizing, intercooler efficiency, and managing heat soak in tropical climates.",
+      "heroImage": "/Images/Events/event7.jpg",
+      "gallery": ["/Images/Events/turbo1.jpg"],
+      "date": "JUNE 10, 2026",
+      "time": "14:00 - 19:00",
+      "location": "PERFAMANA HQ, KOCHI",
+      "registrationLink": "https://forms.gle/turbo-forum",
+      "isRegistrationOpen": true
+    },
+    {
+      "id": "luxury-detailing-expo",
+      "title": "SURFACE_PROTECTION_EXPO",
+      "description": "Showcasing the latest in self-healing ceramic coatings and paint protection films (PPF). Keep your build's finish as sharp as its performance.",
+      "heroImage": "/Images/Events/event8.jpg",
+      "gallery": ["/Images/Events/detail1.jpg"],
+      "date": "JUNE 25, 2026",
+      "time": "10:00 - 17:00",
+      "location": "DUBAI AUTO-ZONE",
+      "registrationLink": "https://forms.gle/detailing-expo",
+      "isRegistrationOpen": true
+    },
+    {
+      "id": "drag-strip-trials",
+      "title": "QUARTER_MILE_TRIALS",
+      "description": "Raw acceleration testing. No excuses, just the clock. Electronic timing with 60ft, 330ft, and 1/8th mile traps recorded.",
+      "heroImage": "/Images/Events/event9.jpg",
+      "gallery": ["/Images/Events/drag1.jpg"],
+      "date": "JULY 12, 2026",
+      "time": "06:00 - 12:00",
+      "location": "AMBY VALLEY AIRSTRIP",
+      "registrationLink": "",
+      "isRegistrationOpen": false
+    },
+    {
+      "id": "anniversary-meet-2026",
+      "title": "PERFAMANA_ANNIVERSARY_05",
+      "description": "Celebrating 5 years of engineering excellence. A gathering of the most significant builds we've ever released from the lab.",
+      "heroImage": "/Images/Events/event10.jpg",
+      "gallery": ["/Images/Events/anniv1.jpg", "/Images/Events/anniv2.jpg"],
+      "date": "AUGUST 01, 2026",
+      "time": "16:00 - 22:00",
+      "location": "GRAND BALLROOM, PUNE",
+      "registrationLink": "https://forms.gle/anniv-invite",
+      "isRegistrationOpen": true
+    }
+  ]
+}

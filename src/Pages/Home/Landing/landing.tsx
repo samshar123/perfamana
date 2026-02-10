@@ -42,7 +42,10 @@ const Landing: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    const timer = setInterval(() => setIndex((p) => (p + 1) % carData.length), 5000);
+    const timer = setInterval(
+      () => setIndex((p) => (p + 1) % carData.length),
+      5000,
+    );
     return () => clearInterval(timer);
   }, []);
 
@@ -54,7 +57,6 @@ const Landing: React.FC = () => {
 
   return (
     <section ref={viewportRef} className="pf-viewport">
-        
       {/* RICH MECHANICAL BACKGROUND GRAPHICS */}
       <div className="aniamtiondivlanfing">
         <div className="power-core">
@@ -64,14 +66,16 @@ const Landing: React.FC = () => {
         </div>
         <div className="industrial-frame top-right"></div>
         <div className="industrial-frame bottom-left"></div>
-        <div className="tech-block b-1"><span>UNIT_720</span></div>
-        <div className="tech-block b-2"><span>LAB_04</span></div>
+        <div className="tech-block b-1">
+          <span>UNIT_720</span>
+        </div>
+        <div className="tech-block b-2">
+          <span>LAB_04</span>
+        </div>
       </div>
 
       <div className="pf-grid-bg"></div>
       <div className="pf-watermark">PERFAMANA</div>
-
-   
 
       <AnimatePresence mode="wait">
         <motion.div
@@ -99,7 +103,11 @@ const Landing: React.FC = () => {
               <h1 className="pf-title stroke-red">{carData[index].title}</h1>
               <p className="pf-desc red-text">{carData[index].desc}</p>
               <div className="pf-img-box">
-                <img src={carData[index].darkImg} className="neon-saturate" alt="Reveal" />
+                <img
+                  src={carData[index].darkImg}
+                  className="neon-saturate"
+                  alt="Reveal"
+                />
               </div>
             </div>
           </div>
@@ -107,29 +115,23 @@ const Landing: React.FC = () => {
       </AnimatePresence>
 
       <div className="pf-scanner-blade">
-        <div className="scanner-glow">
-            
-        </div>
+        <div className="scanner-glow"></div>
       </div>
 
       {/* GLOBAL SLIDER CONTROL (Desktop & Mobile) */}
       <div className="slider-control-wrapper">
-        <input 
-          type="range" 
-          min="0" 
-          max="100" 
-          
-          
-          defaultValue="50" 
+        <input
+          type="range"
+          min="0"
+          max="100"
+          defaultValue="50"
           className="xray-slider-input"
           onChange={handleSliderChange}
         />
-       
       </div>
 
       <footer className="pf-ui pf-footer">
         <div className="pf-dots">
-            
           {carData.map((_, i) => (
             <div key={i} className={`dot ${index === i ? "active" : ""}`} />
           ))}

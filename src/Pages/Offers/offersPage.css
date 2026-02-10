@@ -1,0 +1,225 @@
+:root {
+  --red: #ff002b;
+  --bg-obsidian: #050505;
+  --card-obsidian: #0c0c0c;
+  --border-subtle: #111111;
+  --text-primary: #ffffff;
+  --text-secondary: #888888;
+  --text-dim: #333333;
+}
+
+.obsidian-vault {
+  min-height: 100vh;
+  background: var(--bg-obsidian);
+  color: var(--text-primary);
+  padding: 0 10%;
+  font-family: 'Inter', -apple-system, sans-serif;
+  padding-bottom: 50px;
+}
+
+.p-navbar-spacer { height: 100px; }
+
+/* --- NEURAL PROGRESS --- */
+.neural-progress {
+  display: flex;
+  justify-content: center;
+  margin: 60px 0 80px;
+}
+
+.node-wrapper { display: flex; align-items: center; }
+
+.node-dot {
+  width: 12px; height: 12px;
+  background: #1a1a1a;
+  border-radius: 50%;
+  transition: all 0.5s ease;
+  z-index: 2;
+}
+
+.node-dot.active {
+  background: var(--red);
+  box-shadow: 0 0 15px var(--red);
+}
+
+.node-line {
+  width: 100px; height: 1px;
+  background: #111;
+  transition: all 0.5s ease;
+}
+
+.node-line.active { background: var(--red); }
+
+/* --- TYPOGRAPHY --- */
+.p-hero-title {
+  font-family: 'Syncopate', sans-serif;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 900;
+  letter-spacing: -4px;
+  margin-bottom: 60px;
+  line-height: 0.9;
+}
+
+.silver { color: var(--text-secondary); }
+
+/* --- BRAND CARDS (HOLOGRAPHIC EFFECT) --- */
+.p-grid-wall {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.p-vault-card {
+  position: relative;
+  background: var(--card-obsidian);
+  border: 1px solid var(--border-subtle);
+  padding: 40px;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  cursor: pointer;
+  overflow: hidden;
+  transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.p-vault-card:hover {
+  border-color: var(--red);
+  transform: translateY(-8px);
+}
+
+.p-card-logo-overlay {
+  position: absolute;
+  top: 20px; right: 20px;
+  width: 120px; height: 120px;
+  opacity: 0.05;
+  filter: grayscale(1) brightness(2);
+  transition: 0.6s ease;
+  pointer-events: none;
+}
+
+.p-card-logo-overlay img { width: 100%; height: 100%; object-fit: contain; }
+
+.p-vault-card:hover .p-card-logo-overlay {
+  opacity: 0.3;
+  transform: scale(1.2) rotate(-10deg);
+  filter: grayscale(0) brightness(1.2);
+}
+
+.p-card-id { font-family: 'Orbitron'; font-size: 0.55rem; color: var(--text-dim); letter-spacing: 2px; }
+.p-card-name { font-size: 1.6rem; font-weight: 700; color: #fff; margin-top: 10px; }
+
+/* --- MODEL LIST --- */
+.p-list-item {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--card-obsidian);
+  border: 1px solid var(--border-subtle);
+  padding: 30px 40px;
+  margin-bottom: 12px;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.p-list-item:hover {
+  background: #111;
+  border-color: var(--red);
+  padding-left: 50px;
+}
+
+.p-item-arrow { font-family: 'Orbitron'; font-size: 0.6rem; color: var(--red); letter-spacing: 2px; }
+
+/* --- FORM & INPUTS --- */
+.p-input-pair { display: flex; gap: 30px; margin-bottom: 30px; }
+.p-input-group { flex: 1; display: flex; flex-direction: column; }
+.p-input-group label { font-family: 'Orbitron'; font-size: 0.6rem; color: var(--text-secondary); margin-bottom: 12px; letter-spacing: 2px; }
+
+input {
+  background: #000;
+  border: 1px solid #1a1a1a;
+  padding: 20px;
+  color: #fff;
+  font-family: 'Orbitron';
+  font-size: 1rem;
+  outline: none;
+  transition: 0.3s;
+      border-radius: 10px;
+    margin-bottom: 20px;
+
+}
+
+input:focus { border-color: var(--red); }
+
+/* --- BUTTONS --- */
+.p-btn-ignite {
+  width: 100%;
+  padding: 25px;
+  background: var(--red);
+  color: #fff;
+  border: 2px solid transparent;
+  font-family: 'Orbitron';
+  font-weight: 900;
+  letter-spacing: 4px;
+  cursor: pointer;
+  margin-top: 20px;
+  box-shadow: 0 0 0 rgba(255, 0, 43, 0);
+  transition: 0.4s;
+}
+
+.p-btn-ignite:hover {
+  background: transparent;
+  border-color: var(--red);
+  color: var(--red);
+  box-shadow: 0 0 30px rgba(255, 0, 43, 0.4);
+  transform: scale(1.02);
+}
+
+.p-btn-ignite.mini { width: auto; padding: 12px 30px; font-size: 0.7rem; margin: 0; box-shadow: none; }
+
+.p-btn-back {
+  background: transparent;
+  border: 1px solid #222;
+  color: #444;
+  padding: 12px 25px;
+  font-family: 'Orbitron';
+  font-size: 0.6rem;
+  cursor: pointer;
+  margin-top: 60px;
+  transition: 0.3s;
+}
+
+.p-btn-back:hover { border-color: var(--red); color: #fff; }
+
+/* --- RESULTS --- */
+.p-offer-box {
+  background: var(--card-obsidian);
+  border: 1px solid var(--border-subtle);
+  border-left: 4px solid var(--red);
+  padding: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.p-offer-id { font-family: 'Orbitron'; font-size: 0.6rem; color: var(--red); margin-bottom: 8px; display: block; }
+.p-offer-txt { font-size: 1.8rem; font-weight: 200; color: #fff; }
+
+.p-empty-box {
+  padding: 80px;
+  background: #0a0a0a;
+  border: 1px dashed #222;
+  text-align: center;
+  font-family: 'Orbitron';
+  font-size: 0.8rem;
+  color: #444;
+  line-height: 2;
+}
+
+@media (max-width: 900px) {
+  .p-input-pair { flex-direction: column; }
+  .node-line { width: 40px; }
+  .p-offer-box { flex-direction: column; gap: 20px; align-items: flex-start; }
+}
