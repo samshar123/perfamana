@@ -1,0 +1,175 @@
+.fcta-root {
+  background: #000;
+  padding: 100px 0 150px;
+  position: relative;
+  overflow: hidden;
+}
+
+.fcta-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* --- VISUALS --- */
+.fcta-visual-wrap {
+ 
+    width: 100%;
+    max-width: 1100px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.fcta-car-mask {
+  position: relative;
+  z-index: 1;
+  mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+}
+
+.fcta-car-img {
+  width: 450px;
+  height: auto;
+  filter: brightness(0.7) contrast(1.1);
+  display: block;
+  margin-bottom: 45px;
+}
+
+/* Headlight Glow Effect */
+.fcta-light-flare {
+  position: absolute;
+  top: 45%;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, transparent 70%);
+  filter: blur(20px);
+  z-index: 2;
+  animation: lightPulse 4s infinite alternate;
+}
+
+.fcta-light-flare.left { left: 15%; }
+.fcta-light-flare.right { right: 15%; }
+
+@keyframes lightPulse {
+  0% { opacity: 0.3; transform: scale(1); }
+  100% { opacity: 0.7; transform: scale(1.2); }
+}
+
+/* Enable 3D space for the zoom effect */
+.fcta-perspective-layer {
+  perspective: 1200px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  overflow: visible;
+}
+
+.fcta-car-mask {
+  position: relative;
+  z-index: 1;
+  /* Hardware acceleration is critical for 3-second animations */
+  will-change: transform, opacity;
+  transform-style: preserve-3d;
+  /* Smoother masking for the transition */
+  mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+}
+
+.fcta-car-img {
+  width: 100%;
+  height: auto;
+  filter: brightness(0.8) contrast(1.1);
+  display: block;
+  /* Prevents the 'pixel-pop' at the end of slow zooms */
+  image-rendering: high-quality;
+}
+
+/* --- CONTENT --- */
+.fcta-content {
+  text-align: center;
+  position: relative;
+  z-index: 10;
+  margin-top: -100px; /* Overlap with the car bottom fade */
+  padding: 0 5%;
+}
+
+.fcta-kicker {
+  font-family: 'Orbitron';
+  font-size: 0.7rem;
+  color: #ff002b;
+  letter-spacing: 6px;
+  font-weight: 900;
+}
+
+.fcta-main-heading {
+  font-family: 'Syncopate';
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -3px;
+  margin: 20px 0;
+  line-height: 1;
+}
+
+.text-red { color: #ff002b; }
+
+.fcta-sub-desc {
+  font-size: 1rem;
+  color: #888;
+  max-width: 600px;
+  margin: 0 auto 50px;
+  line-height: 1.6;
+}
+
+/* --- WHATSAPP BUTTON --- */
+.fcta-whatsapp-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  background: #fff;
+  color: #000;
+  text-decoration: none;
+  padding: 22px 45px;
+  font-family: 'Orbitron';
+  font-weight: 900;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  position: relative;
+  transition: 0.4s;
+}
+
+.fcta-whatsapp-btn:hover {
+  background: #ff002b;
+  color: #fff;
+  transform: translateY(-5px);
+}
+
+.btn-pulse {
+  position: absolute;
+  inset: 0;
+  border: 1px solid #fff;
+  animation: btnPulse 2s infinite;
+}
+
+@keyframes btnPulse {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1.3, 1.6); opacity: 0; }
+}
+
+.btn-icon {
+  display: flex;
+  transition: 0.4s;
+}
+
+.fcta-whatsapp-btn:hover .btn-icon { transform: rotate(15deg) scale(1.2); }
+
+@media (max-width: 768px) {
+  .fcta-content { margin-top: -50px; }
+  .fcta-main-heading { font-size: 1.8rem; }
+  .fcta-light-flare { width: 80px; height: 80px; }
+}

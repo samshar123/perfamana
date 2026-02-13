@@ -1,0 +1,27 @@
+[
+  {
+    "id": "01",
+    "q": "WHAT IS THE TURNAROUND TIME?",
+    "a": "Project timelines are precision-mapped. Standard tuning takes 3-5 days, while bespoke body-shop builds require 4-8 weeks of laboratory time."
+  },
+  {
+    "id": "02",
+    "q": "WARRANTY IMPACT?",
+    "a": "We provide an independent engineering guarantee on all custom components. While some factory warranties may shift, our builds are stress-tested for long-term stability."
+  },
+  {
+    "id": "03",
+    "q": "CAN I BRING MY OWN PARTS?",
+    "a": "To ensure mechanical integrity, we only install parts from our verified performance partners. Quality control is our primary protocol."
+  },
+  {
+    "id": "04",
+    "q": "DO YOU TUNE MOTORCYCLES?",
+    "a": "From Four Wheels to Two. Our lab features dedicated bays for high-performance bike calibration and exhaust fabrication."
+  },
+  {
+    "id": "05",
+    "q": "PICKUP & DELIVERY?",
+    "a": "Located at Rise TBI, Arrekode. We offer premium enclosed transport across Kerala to ensure your build arrives in concours condition."
+  }
+]

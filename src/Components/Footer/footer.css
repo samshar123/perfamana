@@ -1,0 +1,120 @@
+.gt-footer {
+  background: #000;
+  min-height: 130vh; /* Targeted height */
+  padding: 150px 0 50px;
+  position: relative;
+  border-top: 1px solid #111;
+  color: #fff;
+  overflow: hidden;
+}
+
+.gt-container {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 0 5%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.gt-label {
+  font-family: 'Orbitron';
+  font-size: 0.6rem;
+  color: #ff002b;
+  letter-spacing: 4px;
+  display: block;
+  margin-bottom: 20px;
+}
+
+/* --- LEVEL 1: BRANDING --- */
+.gt-brand-section {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 80px;
+  padding-bottom: 100px;
+  border-bottom: 1px solid #111;
+}
+
+.gt-logo { height: 50px; width: auto; }
+.gt-brand-tagline { font-family: 'Orbitron'; font-size: 0.55rem; color: rgb(179, 179, 179); margin-top: 15px; letter-spacing: 2px; }
+.gt-address { font-style: normal; color: rgb(179, 179, 179) ; line-height: 1.8; font-size: 0.95rem; }
+.gt-social-links { display: flex; flex-direction: column; gap: 10px; }
+.gt-social-links a { 
+  color: rgb(179, 179, 179); text-decoration: none; font-size: 0.8rem; font-weight: 700; transition: 0.3s; 
+}
+.gt-social-links a:hover { color: #ff002b; }
+
+/* --- LEVEL 2: HUB & MAP --- */
+.gt-hub-section {
+  padding: 120px 0;
+  display: flex;
+  align-items: center;
+  gap: 100px;
+}
+
+.gt-hub-info { flex: 0.8; }
+.gt-hub-kicker { font-family: 'Orbitron'; color: #ff002b; font-size: 0.7rem; letter-spacing: 5px; }
+.gt-hub-name { font-family: 'Syncopate'; font-size: 3rem; font-weight: 900; margin: 20px 0; }
+.gt-hub-desc { color: rgb(179, 179, 179); line-height: 1.8; margin-bottom: 40px; }
+
+.gt-visit-btn {
+  padding: 15px 35px; border: 1px solid #ff002b; color: #fff;
+  text-decoration: none; font-family: 'Orbitron'; font-size: 0.75rem; transition: 0.4s;
+}
+.gt-visit-btn:hover { background: #ff002b; box-shadow: 0 0 20px rgba(255,0,43,0.3); }
+
+.gt-map-wrap {
+  flex: 1.2;
+  height: 450px;
+  position: relative;
+  background: #111;
+  border-top-right-radius: 100px; /* Creative Shape */
+  overflow: hidden;
+}
+
+.gt-iframe { width: 100%; height: 100%; border: none; filter: grayscale(1) invert(0.9) contrast(1.2); }
+.gt-map-overlay { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(to right, #000, transparent 20%); }
+
+/* --- LEVEL 3: NAV MATRIX --- */
+.gt-nav-matrix {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  padding: 100px 0;
+}
+
+.gt-nav-title { font-family: 'Syncopate'; font-size: 0.8rem; color: #fff; margin-bottom: 30px; }
+.gt-nav-col a { 
+  display: block; color: rgb(179, 179, 179); text-decoration: none; font-size: 0.75rem; margin-bottom: 15px; 
+  transition: 0.3s; font-family: 'Orbitron';
+}
+.gt-nav-col a:hover { color: #ff002b; padding-left: 5px; }
+
+/* --- LEVEL 4: BOTTOM --- */
+.gt-bottom-bar {
+  margin-top: auto; /* Pushes to bottom of container */
+  padding-bottom: 50px;
+  position: relative;
+}
+
+.gt-copyright { font-size: 0.6rem; color: rgb(179, 179, 179); font-family: 'Orbitron'; letter-spacing: 2px; }
+
+.gt-ghost-logo {
+  position: absolute;
+  bottom: -40px; right: -10px;
+  font-family: 'Syncopate';
+  font-size: 18vw;
+  font-weight: 900;
+  color: rgba(255, 33, 33, 0.168);
+  pointer-events: none;
+  line-height: 1;
+
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .gt-footer { height: auto; padding: 80px 0; }
+  .gt-brand-section, .gt-nav-matrix { grid-template-columns: 1fr 1fr; }
+  .gt-hub-section { flex-direction: column; align-items: flex-start; }
+  .gt-hub-name { font-size: 2rem; }
+}

@@ -8,6 +8,7 @@ import OffersPage from './Pages/Offers/offersPage';
 import EventDetail from './Pages/Home/EventSection/EventDetail';
 import Navbar from './Components/Navbar/navbar';
 import AllEvents from "./Pages/Events/Allevents"
+import Footer from './Components/Footer/footer';
 
 function App() {
   const location = useLocation();
@@ -33,6 +34,7 @@ function App() {
         <Route path="/allevents" element={<AllEvents />} />
 
       </Routes>
+      <Footer></Footer>
     </div>
   );
 }
