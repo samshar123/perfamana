@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import serviceData from '../../../../src/data/services.json'
-import './serviceDetail.css';
+import './ServiceDetail.css';
 
 const ServiceDetail: React.FC = () => {
   const { id } = useParams();
