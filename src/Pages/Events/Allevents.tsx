@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import eventData from '../../data/events.json';
-import './allEvents.css';
+import './Allevents.css';
 
 const AllEvents: React.FC = () => {
   const [filter, setFilter] = useState<'ALL' | 'UPCOMING' | 'PAST'>('ALL');

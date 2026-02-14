@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import eventData from '../../../data/events.json';
-import './eventDetail.css';
+import './EventDetail.css';
 
 const EventDetail: React.FC = () => {
   const { id } = useParams();

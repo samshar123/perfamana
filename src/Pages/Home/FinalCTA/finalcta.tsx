@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import './finalCTA.css';
+import './finalcta.css';
 
 const FinalCTA: React.FC = () => {
   return (

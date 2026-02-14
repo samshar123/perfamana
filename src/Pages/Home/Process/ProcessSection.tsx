@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { motion, useScroll, useTransform, useSpring, useMotionValueEvent } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import './processSection.css';
+import './ProcessSection.css';
 
 const steps = [
   { id: '01', title: 'CONSULTATION & CONCEPT', desc: 'Technical briefing to analyze vehicle DNA and define performance milestones.' },
