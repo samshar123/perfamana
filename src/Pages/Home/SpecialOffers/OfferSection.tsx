@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { motion, AnimatePresence, color } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import './offerSection.css';
 import videoSrc from "../../../../public/video1.mp4";
@@ -10,22 +10,22 @@ const IgnitionOffer: React.FC = () => {
   const [isIgnited, setIsIgnited] = useState(false);
   const navigate = useNavigate();
 
-  const handleIgnition = () => {
-    setIsIgnited(true);
-    if (videoRef.current) {
-      // The video starts playing only here
-      videoRef.current.play();
-      videoRef.current.playbackRate = 1.50; 
-    }
-    
-    // Quick burst of intensity before redirect
-    setTimeout(() => {
-      navigate('/offers');
-    }, 1800);
-  };
+ const handleIgnition = () => {
+  setIsIgnited(true);
+  if (videoRef.current) {
+    videoRef.current.play();
+    videoRef.current.playbackRate = 1.50; 
+  }
+  
+  setTimeout(() => {
+    navigate('/offers');
+    // Force the window to the top immediately after navigation
+    window.scrollTo(0, 0);
+  }, 1800);
+};
 
   return (
-    <section className={`ign-viewport ${isIgnited ? 'active-launch' : ''}`}>
+    <section id='offers' className={`ign-viewport ${isIgnited ? 'active-launch' : ''}`}>
       {/* 1. THE VIDEO WITH PERMANENT POSTER SCREENSHOT */}
       <video 
         ref={videoRef}
@@ -64,14 +64,15 @@ const IgnitionOffer: React.FC = () => {
               </h1>
 
               <div className="ign-bottom-row">
-               
-                <a href="/offers">
-                  <button className="ign-massive-trigger">
+                <p className="ign-bold-desc">
+                  AUTHORIZED ACCESS ONLY. UNLOCK STAGE-3 CALIBRATION DATA AND 
+                  PERFORMANCE REWARDS.
+                </p>
+                
+                <button className="ign-massive-trigger" onClick={handleIgnition}>
                   <div className="ign-btn-fill"></div>
                   <span className="ign-btn-text">IGNITE PROTOCOL</span>
                 </button>
-                </a>
-              
               </div>
             </div>
           </motion.div>

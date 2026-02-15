@@ -28,7 +28,7 @@ const OffersPage: React.FC = () => {
   };
 
   return (
-    <div className="obsidian-vault">
+    <div  className="obsidian-vault">
       <div className="p-navbar-spacer" />
 
       <div className="neural-progress">
@@ -47,7 +47,7 @@ const OffersPage: React.FC = () => {
               <h1 className="p-hero-title">SELECT <span className="silver">MANUFACTURER</span></h1>
               
               {/* --- NEW SEARCH INTERCEPT BAR --- */}
-              <div className="p-search-wrapper">
+              <div id='offers' className="p-search-wrapper">
                 
                 <input 
                   type="text" 
