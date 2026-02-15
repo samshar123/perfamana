@@ -6,7 +6,7 @@ import './project.css';
 
 const Project: React.FC = () => {
   return (
-    <section className="pj-grid-viewport">
+    <section id='projects' className="pj-grid-viewport">
       {/* BACKGROUND DECOR */}
       <div className="pj-bg-overlay">
         <div className="pj-line-h"></div>

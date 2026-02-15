@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, color } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import './offerSection.css';
 import videoSrc from "../../../../public/video1.mp4";
@@ -64,15 +64,14 @@ const IgnitionOffer: React.FC = () => {
               </h1>
 
               <div className="ign-bottom-row">
-                <p className="ign-bold-desc">
-                  AUTHORIZED ACCESS ONLY. UNLOCK STAGE-3 CALIBRATION DATA AND 
-                  PERFORMANCE REWARDS.
-                </p>
-                
-                <button className="ign-massive-trigger" onClick={handleIgnition}>
+               
+                <a href="/offers">
+                  <button className="ign-massive-trigger">
                   <div className="ign-btn-fill"></div>
                   <span className="ign-btn-text">IGNITE PROTOCOL</span>
                 </button>
+                </a>
+              
               </div>
             </div>
           </motion.div>

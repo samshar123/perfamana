@@ -16,7 +16,7 @@ const Service: React.FC = () => {
   const x = useTransform(scrollYProgress, [0, 1], ["0%", "-75%"]);
 
   return (
-    <div ref={containerRef} className="hz-container">
+    <div id='services' ref={containerRef} className="hz-container">
       <div className="hz-sticky">
         {/* BACKGROUND SCAN LINES */}
         <div className="hz-scanlines"></div>

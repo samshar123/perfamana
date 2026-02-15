@@ -145,7 +145,11 @@ const OffersPage: React.FC = () => {
                         <span className="p-offer-id">PRFA_UNIT_0{i+1}</span>
                         <p className="p-offer-txt">{offer}</p>
                       </div>
+                      <a  href="https://wa.me/917306096088" 
+              target="_blank" 
+              rel="noreferrer" >
                       <button className="p-btn-ignite mini">CONNECT TEAM</button>
+                      </a>
                     </div>
                   ))
                 ) : (

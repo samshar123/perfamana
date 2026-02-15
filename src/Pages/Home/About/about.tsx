@@ -4,7 +4,7 @@ import './about.css';
 
 const About: React.FC = () => {
   return (
-    <section className="about-blueprint">
+    <section id='about' className="about-blueprint">
       {/* BACKGROUND ELEMENTS */}
       <div className="bp-grid"></div>
       

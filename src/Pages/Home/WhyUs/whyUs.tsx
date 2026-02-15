@@ -25,7 +25,7 @@ const features = [
 
 const WhyUs: React.FC = () => {
   return (
-    <section className="mono-root">
+    <section id='why-us' className="mono-root">
       <div className="mono-container">
         <header className="mono-header">
           <div className="mono-title-wrap">

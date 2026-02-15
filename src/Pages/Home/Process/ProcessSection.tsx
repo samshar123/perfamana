@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { motion, useScroll, useTransform, useSpring, useMotionValueEvent } from 'framer-motion';
-import { Link } from 'react-router-dom';
+
 import './ProcessSection.css';
 
 const steps = [
@@ -40,7 +40,7 @@ const ProcessSection: React.FC = () => {
   });
 
   return (
-    <section ref={containerRef} className="proc-root">
+    <section id='process' ref={containerRef} className="proc-root">
       <div className="proc-sticky-wrapper">
         <div className="proc-main-layout">
           
@@ -100,8 +100,8 @@ const ProcessSection: React.FC = () => {
             </div>
 
             <footer className="proc-footer">
-              <Link 
-                to="/contact" 
+              <a 
+                href="#cta" 
                 className={`proc-tactical-btn ${isFinalStep ? 'btn-final-state' : ''}`}
               >
                 <span className="btn-glitch">
@@ -109,7 +109,7 @@ const ProcessSection: React.FC = () => {
                 </span>
                 <div className="btn-scanner"></div>
                 <span className="btn-arrow">→</span>
-              </Link>
+              </a>
             </footer>
           </div>
 

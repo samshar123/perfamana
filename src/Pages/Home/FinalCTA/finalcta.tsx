@@ -4,7 +4,7 @@ import './finalcta.css';
 
 const FinalCTA: React.FC = () => {
   return (
-    <section className="fcta-root">
+    <section id='cta' className="fcta-root">
       <div className="fcta-container">
         
         {/* MAIN VISUAL: SLOW CINEMATIC ZOOM */}
