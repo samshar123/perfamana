@@ -54,7 +54,7 @@ const IgnitionOffer: React.FC = () => {
             <div className="ign-content-frame">
               <div className="ign-top-bar">
                 <div className="ign-red-dot"></div>
-                <span className="ign-terminal-text">SYSTEM_LOCK: SECTOR_09</span>
+                <span style={{color:"white", fontSize:"1rem"}} className="ign-terminal-text">GET YOUR OFFERS</span>
               </div>
 
               <h1 className="ign-bold-title">
@@ -64,10 +64,7 @@ const IgnitionOffer: React.FC = () => {
               </h1>
 
               <div className="ign-bottom-row">
-                <p className="ign-bold-desc">
-                  AUTHORIZED ACCESS ONLY. UNLOCK STAGE-3 CALIBRATION DATA AND 
-                  PERFORMANCE REWARDS.
-                </p>
+             
                 
                 <button className="ign-massive-trigger" onClick={handleIgnition}>
                   <div className="ign-btn-fill"></div>

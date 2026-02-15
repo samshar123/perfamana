@@ -167,3 +167,15 @@
 }
 
 @keyframes blink { 50% { opacity: 0.2; } }
+
+@media (max-width:920px) {
+  .ign-bold-title{
+    font-family: 'Syncopate';
+    font-size: clamp(3rem, 5vw, 10rem);
+    font-weight: 900;
+    line-height: 0.8;
+    letter-spacing: 10px;
+    color: #fff;
+    margin-bottom: 60px;
+  }
+}
