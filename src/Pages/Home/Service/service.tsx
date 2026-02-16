@@ -1,12 +1,28 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import serviceData from '../../../data/services.json';
+import API_BASE from '../../../config/api';
 import './service.css';
+
+interface ServiceData {
+  id: string;
+  title: string;
+  shortDesc: string;
+  thumbnail: string | null;
+  path: string;
+}
 
 const Service: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
+  const [services, setServices] = useState<ServiceData[]>([]);
+
+  useEffect(() => {
+    fetch(`${API_BASE}/api/services/`)
+      .then(res => res.json())
+      .then(data => setServices(data.services))
+      .catch(err => console.error('Failed to fetch services:', err));
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -22,7 +38,7 @@ const Service: React.FC = () => {
         <div className="hz-scanlines"></div>
         
         <motion.div style={{ x }} className="hz-track">
-          {serviceData.services.map((service, i) => (
+          {services.map((service, i) => (
             <div key={service.id} className="hz-slide">
               <div className="hz-modern-card">
                 
@@ -39,7 +55,7 @@ const Service: React.FC = () => {
                   <div className="hz-corner tr"></div>
                   <div className="hz-corner bl"></div>
                   <div className="hz-corner br"></div>
-                  <img src={service.thumbnail} alt={service.title} />
+                  {service.thumbnail && <img src={service.thumbnail} alt={service.title} />}
                   <div className="hz-img-overlay"></div>
                 </div>
 

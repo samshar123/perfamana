@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import API_BASE from '../../../config/api';
 import './FaqSection.css';
 
 interface FAQItem {
@@ -13,8 +14,7 @@ const FaqSection: React.FC = () => {
   const [active, setActive] = useState<number>(0);
 
   useEffect(() => {
-    // Fetching from public/data/faq.json
-    fetch('../../src/data/faq.json')
+    fetch(`${API_BASE}/api/faq/`)
       .then((res) => {
         if (!res.ok) throw new Error("Network response was not ok");
         return res.json();

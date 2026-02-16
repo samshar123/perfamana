@@ -1,23 +1,23 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './brands.css';
-import logo1 from '../../../../public/Images/Brands/BMW.svg';
-import logo2 from '../../../../public/Images/Brands/Ferrari-Logo.png';
-import logo3 from '../../../../public/Images/Brands/Mercedes.png';
-import logo4 from '../../../../public/Images/Brands/lamborghini.svg';
-import logo5 from '../../../../public/Images/Brands/mistibushi.png';
-import logo6 from '../../../../public/Images/Brands/volvo.svg';
-import logo7 from '../../../../public/Images/Brands/porche.svg'; 
+import API_BASE from '../../../config/api';
+
+interface PartnerBrand {
+  id: number;
+  name: string;
+  logo: string | null;
+  order: number;
+}
 
 const Brands: React.FC = () => {
-  const brands = [
-    { name: 'Brembo', img: logo1 },
-    { name: 'Akrapovic', img: logo2},
-    { name: 'Ohlins', img: logo3},
-    { name: 'Michelin', img: logo4 },
-    { name: 'Motul', img: logo5 },
-    { name: 'HKS', img: logo6 },
-    { name: 'Porsche', img: logo7 },
-  ];
+  const [brands, setBrands] = useState<PartnerBrand[]>([]);
+
+  useEffect(() => {
+    fetch(`${API_BASE}/api/homepage/partner-brands/`)
+      .then(res => res.json())
+      .then(data => setBrands(data))
+      .catch(err => console.error('Failed to fetch partner brands:', err));
+  }, []);
 
   return (
     <section className="fs-section">
@@ -37,7 +37,7 @@ const Brands: React.FC = () => {
             {[...brands, ...brands].map((brand, i) => (
               <div key={i} className="fs-item">
                 <div className="fs-hex-bracket"></div>
-                <img src={brand.img} alt={brand.name} className="fs-logo" />
+                {brand.logo && <img src={brand.logo} alt={brand.name} className="fs-logo" />}
                 <span className="fs-serial">PVL_{i.toString().padStart(3, '0')}</span>
               </div>
             ))}

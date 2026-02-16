@@ -1,11 +1,28 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import eventData from '../../../data/events.json';
+import API_BASE from '../../../config/api';
 import './EventsSection.css';
 
+interface EventData {
+  id: number;
+  slug: string;
+  title: string;
+  heroImage: string | null;
+  date: string;
+  time: string;
+  location: string;
+}
+
 const EventSection: React.FC = () => {
-  const latestEvents = eventData.events.slice(0, 6);
+  const [events, setEvents] = useState<EventData[]>([]);
+
+  useEffect(() => {
+    fetch(`${API_BASE}/api/events/`)
+      .then(res => res.json())
+      .then(data => setEvents(data.slice(0, 6)))
+      .catch(err => console.error('Failed to fetch events:', err));
+  }, []);
 
   return (
     <section className="hud-root">
@@ -32,22 +49,22 @@ const EventSection: React.FC = () => {
           </svg>
 
           <div className="hud-nodes-grid">
-            {latestEvents.map((event, index) => (
+            {events.map((event, index) => (
               <motion.div 
-                key={event.id}
+                key={event.slug}
                 className={`hud-node node-${index + 1}`}
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 whileHover={{ y: -5, x: 2 }}
               >
-                <Link to={`/events/${event.id}`} className="hud-node-inner">
+                <Link to={`/events/${event.slug}`} className="hud-node-inner">
                   <div className="hud-node-header">
                     <span className="hud-signal">SIGNAL_00{index + 1}</span>
                     <div className="hud-status-light"></div>
                   </div>
                   
                   <div className="hud-node-visual">
-                    <img src={event.heroImage} alt="" />
+                    {event.heroImage && <img src={event.heroImage} alt="" />}
                     <div className="hud-glitch-overlay"></div>
                   </div>
 

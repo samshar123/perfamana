@@ -1,18 +1,34 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import eventData from '../../data/events.json';
+import API_BASE from '../../config/api';
 import './Allevents.css';
 
+interface EventData {
+  id: number;
+  slug: string;
+  title: string;
+  heroImage: string | null;
+  date: string;
+  time: string;
+  location: string;
+  isRegistrationOpen?: boolean;
+}
+
 const AllEvents: React.FC = () => {
+  const [events, setEvents] = useState<EventData[]>([]);
   const [filter, setFilter] = useState<'ALL' | 'UPCOMING' | 'PAST'>('ALL');
   const [query, setQuery] = useState('');
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    fetch(`${API_BASE}/api/events/`)
+      .then(res => res.json())
+      .then(data => setEvents(data))
+      .catch(err => console.error('Failed to fetch events:', err));
   }, []);
 
-  const filteredEvents = eventData.events.filter(event => {
+  const filteredEvents = events.filter(event => {
     const matchesSearch = event.title.toLowerCase().includes(query.toLowerCase()) || 
                           event.location.toLowerCase().includes(query.toLowerCase());
     
@@ -74,9 +90,9 @@ const AllEvents: React.FC = () => {
                 transition={{ duration: 0.3 }}
                 className="archive-card"
               >
-                <Link to={`/events/${event.id}`} className="archive-card-link">
+                <Link to={`/events/${event.slug}`} className="archive-card-link">
                   <div className="archive-img-wrapper">
-                    <img src={event.heroImage} alt={event.title} />
+                    {event.heroImage && <img src={event.heroImage} alt={event.title} />}
                     <div className={`status-tag ${event.isRegistrationOpen ? 'live' : 'archived'}`}>
                       {event.isRegistrationOpen ? 'LIVE_STATUS' : 'ARCHIVED'}
                     </div>
@@ -84,7 +100,7 @@ const AllEvents: React.FC = () => {
                   
                   <div className="archive-card-content">
                     <div className="archive-card-top">
-                      <span className="archive-card-id">ID: {event.id.slice(0, 8)}</span>
+                      <span className="archive-card-id">ID: {event.slug.slice(0, 8)}</span>
                       <span className="archive-card-date">{event.date}</span>
                     </div>
                     <h3 className="archive-card-title">{event.title}</h3>
