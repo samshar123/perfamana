@@ -136,7 +136,7 @@ const Landing: React.FC = () => {
             <div key={i} className={`dot ${index === i ? "active" : ""}`} />
           ))}
         </div>
-        <div className="pf-loc">CALICUT // KERALA</div>
+        <div className="pf-loc"><h3 style={{fontFamily:"Orbitron"}}>CALICUT // KERALA</h3> </div>
       </footer>
     </section>
   );

@@ -13,7 +13,7 @@ const ServiceDetail: React.FC = () => {
     <div className="sd-viewport">
       <nav className="sd-nav">
         <Link to="/" className="sd-back">← BACK_TO_LAB</Link>
-        <div className="sd-id">ID: {data.id.toUpperCase()}</div>
+    
       </nav>
 
       <div className="sd-hero">

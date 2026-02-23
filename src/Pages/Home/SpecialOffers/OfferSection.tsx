@@ -40,7 +40,7 @@ const IgnitionOffer: React.FC = () => {
       </video>
 
       {/* GIANT BACKGROUND DECOR */}
-      <div className="ign-bg-giant-text">OFFER</div>
+      {/* <div className="ign-bg-giant-text">OFFER</div> */}
 
       <AnimatePresence>
         {!isIgnited && (

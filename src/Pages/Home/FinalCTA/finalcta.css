@@ -1,6 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&display=swap');
+
+:root {
+  --fcta-red: #E31837;
+  --fcta-white: #ffffff;
+  --fcta-black: #0a0a0a;
+  --fcta-gray: #666666;
+  --font-smooth: 'Plus Jakarta Sans', sans-serif;
+}
+
 .fcta-root {
-  background: #000;
-  padding: 100px 0 150px;
+  background: var(--fcta-white); /* Pure White Theme */
+  padding: 120px 0 180px;
   position: relative;
   overflow: hidden;
 }
@@ -16,48 +26,12 @@
 
 /* --- VISUALS --- */
 .fcta-visual-wrap {
- 
-    width: 100%;
-    max-width: 1100px;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-}
-
-.fcta-car-mask {
+  width: 100%;
+  max-width: 1100px;
   position: relative;
-  z-index: 1;
-  mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
-}
-
-.fcta-car-img {
-  width: 450px;
-  height: auto;
-  filter: brightness(0.7) contrast(1.1);
-  display: block;
-  margin-bottom: 45px;
-}
-
-/* Headlight Glow Effect */
-.fcta-light-flare {
-  position: absolute;
-  top: 45%;
-  width: 150px;
-  height: 150px;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, transparent 70%);
-  filter: blur(20px);
-  z-index: 2;
-  animation: lightPulse 4s infinite alternate;
-}
-
-.fcta-light-flare.left { left: 15%; }
-.fcta-light-flare.right { right: 15%; }
-
-@keyframes lightPulse {
-  0% { opacity: 0.3; transform: scale(1); }
-  100% { opacity: 0.7; transform: scale(1.2); }
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Enable 3D space for the zoom effect */
@@ -72,21 +46,40 @@
 .fcta-car-mask {
   position: relative;
   z-index: 1;
-  /* Hardware acceleration is critical for 3-second animations */
   will-change: transform, opacity;
   transform-style: preserve-3d;
-  /* Smoother masking for the transition */
-  mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+  /* Smoother masking for white theme */
+  mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
 }
 
 .fcta-car-img {
-  width: 100%;
+  width: 500px;
   height: auto;
-  filter: brightness(0.8) contrast(1.1);
+  filter: brightness(1) contrast(1.05); /* Brighter for white theme */
   display: block;
-  /* Prevents the 'pixel-pop' at the end of slow zooms */
+  margin-bottom: 45px;
   image-rendering: high-quality;
+}
+
+/* Headlight Glow Effect (Refined for light background) */
+.fcta-light-flare {
+  position: absolute;
+  top: 45%;
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle, rgba(227, 24, 55, 0.15) 0%, transparent 70%);
+  filter: blur(30px);
+  z-index: 2;
+  animation: lightPulse 4s infinite alternate;
+}
+
+.fcta-light-flare.left { left: 10%; }
+.fcta-light-flare.right { right: 10%; }
+
+@keyframes lightPulse {
+  0% { opacity: 0.4; transform: scale(1); }
+  100% { opacity: 0.8; transform: scale(1.3); }
 }
 
 /* --- CONTENT --- */
@@ -94,71 +87,79 @@
   text-align: center;
   position: relative;
   z-index: 10;
-  margin-top: -100px; /* Overlap with the car bottom fade */
+  margin-top: -80px; 
   padding: 0 5%;
 }
 
 .fcta-kicker {
-  font-family: 'Orbitron';
-  font-size: 0.7rem;
-  color: #ff002b;
-  letter-spacing: 6px;
-  font-weight: 900;
+  font-family: var(--font-smooth);
+  font-size: 0.75rem;
+  color: var(--fcta-red);
+  letter-spacing: 4px;
+  font-weight: 800;
+  text-transform: uppercase;
 }
 
 .fcta-main-heading {
-  font-family: 'Syncopate';
-  font-size: clamp(2rem, 5vw, 4rem);
-  font-weight: 900;
-  color: #fff;
-  letter-spacing: -3px;
+  font-family: var(--font-smooth);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 800;
+  color: var(--fcta-black);
+  letter-spacing: -3px; /* Tight for smooth look */
   margin: 20px 0;
-  line-height: 1;
+  line-height: 1.1;
 }
 
-.text-red { color: #ff002b; }
+.text-red { color: var(--fcta-red); }
 
 .fcta-sub-desc {
-  font-size: 1rem;
-  color: #888;
-  max-width: 600px;
-  margin: 0 auto 50px;
-  line-height: 1.6;
+  font-family: var(--font-smooth);
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--fcta-gray);
+  max-width: 650px;
+  margin: 0 auto 60px;
+  line-height: 1.8;
 }
 
-/* --- WHATSAPP BUTTON --- */
+/* --- WHATSAPP BUTTON (Smooth & Bold) --- */
 .fcta-whatsapp-btn {
   display: inline-flex;
   align-items: center;
   gap: 20px;
-  background: #fff;
-  color: #000;
+  background: var(--fcta-black);
+  color: #fff;
   text-decoration: none;
-  padding: 22px 45px;
-  font-family: 'Orbitron';
-  font-weight: 900;
-  font-size: 0.85rem;
-  letter-spacing: 2px;
+  padding: 22px 50px;
+  font-family: var(--font-smooth);
+  font-weight: 800;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  border-radius: 60px; /* Full smooth pill shape */
   position: relative;
-  transition: 0.4s;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
 }
 
 .fcta-whatsapp-btn:hover {
-  background: #ff002b;
+  background: var(--fcta-red);
   color: #fff;
-  transform: translateY(-5px);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 25px 50px rgba(227, 24, 55, 0.2);
 }
 
 .btn-pulse {
   position: absolute;
-  inset: 0;
-  border: 1px solid #fff;
+  inset: -2px;
+  border: 1px solid var(--fcta-black);
+  border-radius: 60px;
   animation: btnPulse 2s infinite;
+  pointer-events: none;
 }
 
 @keyframes btnPulse {
-  0% { transform: scale(1); opacity: 1; }
-  100% { transform: scale(1.3, 1.6); opacity: 0; }
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(1.15, 1.4); opacity: 0; }
 }
 
 .btn-icon {
@@ -166,10 +167,14 @@
   transition: 0.4s;
 }
 
-.fcta-whatsapp-btn:hover .btn-icon { transform: rotate(15deg) scale(1.2); }
+.fcta-whatsapp-btn:hover .btn-icon { 
+  transform: translateX(5px) scale(1.1); 
+}
 
 @media (max-width: 768px) {
-  .fcta-content { margin-top: -50px; }
-  .fcta-main-heading { font-size: 1.8rem; }
-  .fcta-light-flare { width: 80px; height: 80px; }
+  .fcta-root { padding: 80px 0 120px; }
+  .fcta-content { margin-top: -40px; }
+  .fcta-main-heading { font-size: 2.2rem; letter-spacing: -1.5px; }
+  .fcta-light-flare { width: 100px; height: 100px; }
+  .fcta-whatsapp-btn { width: 90%; justify-content: center; }
 }

@@ -1,8 +1,17 @@
+:root {
+  --red: #E31837;
+  --bg-white: #ffffff;
+  --card-bg: #f9f9f9;
+  --text-main: #0a0a0a;
+  --text-muted: #999;
+  --font-smooth: 'Plus Jakarta Sans', sans-serif; /* High-end smooth edge font */
+}
+
 .fs-section {
-  background: #000;
-  height: 250px; /* Extremely short height */
-  border-top: 1px solid #111;
-  border-bottom: 1px solid #111;
+  background: var(--bg-white); /* Pure White Background */
+  height: 250px;
+  border-top: 1px solid #eeeeee;
+  border-bottom: 1px solid #eeeeee;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -26,98 +35,111 @@
 }
 
 .fs-glitch-text {
-  font-family: 'Orbitron';
-  font-size: 0.55rem;
+  font-family: 'Orbitron'; /* Kept for small technical detail */
+  font-size: 0.6rem;
+  font-weight: 800;
   color: var(--red);
-  letter-spacing: 5px;
-  margin-bottom: 10px;
+  letter-spacing: 4px;
+  margin-bottom: 12px;
 }
 
 .fs-main-heading {
-  font-family: 'Orbitron';
-  font-size: 1.5rem;
-  color: #fff;
-  line-height: 1.1;
-  font-weight: 900;
+  font-family: var(--font-smooth); /* Smooth edge bold font */
+  font-size: 1.6rem;
+  color: var(--text-main);
+  line-height: 1.2;
+  font-weight: 800;
+  letter-spacing: -0.5px;
 }
 
 .fs-meter {
   width: 100px;
-  height: 2px;
-  background: #111;
+  height: 3px;
+  background: #f0f0f0;
   margin-top: 20px;
   position: relative;
+  border-radius: 10px; /* Smooth rounded edges */
 }
 
 .fs-meter-fill {
   position: absolute;
   height: 100%;
-  width: 40%;
+  width: 45%;
   background: var(--red);
-  box-shadow: 0 0 10px var(--red);
+  box-shadow: 0 0 12px rgba(227, 24, 55, 0.3);
+  border-radius: 10px;
 }
 
 /* RIGHT FILMSTRIP WRAP */
 .fs-filmstrip-wrap {
   flex: 1;
   height: 200px;
+  /* Mask adjusted for white background */
   mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
   -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
   overflow: hidden;
 }
 
 .fs-filmstrip-track {
-  display: flex;
-  gap: 30px;
-  width: max-content;
-  animation: slideBrands 20s linear infinite;
+    display: flex;
+    gap: 30px;
+    width: max-content;
+    padding-top: 20px;
+    animation: slideBrands 25s linear infinite;
 }
-
 .fs-item {
   width: 200px;
   height: 120px;
-  background: #080808;
-  border: 1px solid #151515;
+  background: #fff;
+  border: 1px solid #f0f0f0;
+  border-radius: 12px; /* Smooth edge cards */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
-  transition: 0.3s;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
 }
 
 .fs-hex-bracket {
   position: absolute;
-  inset: 5px;
-  border: 1px solid rgba(227, 24, 55, 0.05);
+  inset: 0;
+  border: 1px solid transparent;
+  border-radius: 12px;
   pointer-events: none;
+  transition: 0.3s;
 }
 
 .fs-logo {
-  max-width: 100px;
-  height: 60px;
- 
-  transition: 0.5s;
+  max-width: 110px;
+  height: 65px;
+  object-fit: contain;
+  filter: opacity(0.8); /* Muted for white theme */
+  transition: 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .fs-serial {
   position: absolute;
-  top: 8px;
-  right: 8px;
+  top: 10px;
+  right: 12px;
   font-family: 'Orbitron';
-  font-size: 0.4rem;
-  color: #222;
+  font-size: 0.45rem;
+  color: #ccc;
+  font-weight: 700;
 }
 
 /* HOVER EFFECTS */
 .fs-item:hover {
-  background: #0c0c0c;
+  background: #fff;
   border-color: var(--red);
-  transform: scale(1.05);
+  transform: translateY(-5px); /* Smooth lift instead of just scale */
+  box-shadow: 0 15px 30px rgba(227, 24, 55, 0.08);
 }
 
 .fs-item:hover .fs-logo {
-  filter: grayscale(0) brightness(1);
+  filter: grayscale(0) opacity(1);
+  transform: scale(1.1);
 }
 
 .fs-item:hover .fs-serial {
@@ -133,6 +155,7 @@
 /* MOBILE */
 @media (max-width: 900px) {
   .fs-container { flex-direction: column; align-items: flex-start; gap: 30px; }
-  .fs-section { height: auto; padding: 40px 0; }
+  .fs-section { height: auto; padding: 50px 0; }
   .fs-filmstrip-wrap { width: 100%; }
+  .fs-main-heading { font-size: 1.3rem; }
 }

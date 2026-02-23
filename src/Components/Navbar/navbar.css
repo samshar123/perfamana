@@ -67,6 +67,11 @@
   filter: drop-shadow(0 0 15px rgba(227, 24, 55, 0.3));
 }
 
+
+
+
+
+
 @keyframes logoScan {
   0% { left: -100%; }
   100% { left: 200%; }
@@ -100,14 +105,14 @@
 }
 
 .link-index { font-family: 'Orbitron'; font-size: 0.5rem; color: var(--red); margin-bottom: 2px; }
-.link-text { font-family: 'Orbitron'; font-size: 0.75rem; font-weight: 900; color: #dfdfdf; letter-spacing: 2px; transition: 0.3s; }
+.link-text { font-family: 'Orbitron'; font-size: 0.75rem; font-weight: 900; color: rgb(35, 35, 35); letter-spacing: 2px; transition: 0.3s; }
 
-.nav-link-item:hover .link-text, .nav-link-item.active .link-text { color: #fff; }
+.nav-link-item:hover .link-text, .nav-link-item.active .link-text { color: black; }
 
 /* --- MOBILE TRIGGER --- */
 .nav-trigger { background: none; border: none; cursor: pointer; display: none; }
 .trigger-box { display: flex; flex-direction: column; gap: 6px; align-items: flex-end; }
-.trigger-line { width: 30px; height: 2px; background: #fff; transition: 0.3s; }
+.trigger-line { width: 30px; height: 2px; background: #000000; transition: 0.3s; }
 .trigger-line.short { width: 15px; background: var(--red); }
 
 /* --- MOBILE OVERLAY & CLOSE --- */
