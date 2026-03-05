@@ -13,7 +13,7 @@ const EventDetail: React.FC = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  if (!event) return <div className="ev-error">ERROR_404: EVENT_DATA_NOT_FOUND</div>;
+  if (!event) return <div className="ev-error">ERROR  404:  EVENT  DATA  NOT  FOUND</div>;
 
   return (
     <div className="dossier-root">
@@ -24,7 +24,7 @@ const EventDetail: React.FC = () => {
         <div className="dossier-visual-panel">
           <div className="dossier-main-img">
             <img src={event.heroImage} alt={event.title} />
-            <div className="img-corner-id">ARCHIVE_{event.id.slice(0, 5)}</div>
+            <div className="img-corner-id">ARCHIVE  {event.id.slice(0, 5)}</div>
           </div>
           <div className="dossier-quick-stats">
             <div className="d-stat">
@@ -33,7 +33,7 @@ const EventDetail: React.FC = () => {
             </div>
             <div className="d-stat">
               <span className="d-label">TIMESTAMP</span>
-              <span className="d-value">{event.date} // {event.time}</span>
+              <span className="d-value">{event.date} | {event.time}</span>
             </div>
           </div>
         </div>
@@ -41,21 +41,21 @@ const EventDetail: React.FC = () => {
         {/* RIGHT SIDE: SCROLLABLE INTEL */}
         <div className="dossier-data-panel">
           <Link to="/events" className="dossier-back-btn">
-            <span className="back-arrow">←</span> BACK_TO_ARCHIVE
+            <span className="back-arrow">←</span> BACK  TO  ARCHIVE
           </Link>
 
           <header className="dossier-header">
-            <span className="dossier-kicker">// OFFICIAL_LOG_ENTRY</span>
+            <span className="dossier-kicker">OFFICIAL  LOG  ENTRY</span>
             <h1 className="dossier-title">{event.title}</h1>
           </header>
 
           <section className="dossier-section">
-            <h4 className="section-label">EXECUTIVE_SUMMARY</h4>
+            <h4 className="section-label">EXECUTIVE  SUMMARY</h4>
             <p className="dossier-description">{event.description}</p>
           </section>
 
           <section className="dossier-section">
-            <h4 className="section-label">MISSION_GALLERY</h4>
+            <h4 className="section-label">MISSION  GALLERY</h4>
             <div className="dossier-gallery-grid">
               {event.gallery.map((img, i) => (
                 <motion.div 
@@ -72,11 +72,11 @@ const EventDetail: React.FC = () => {
           <footer className="dossier-footer">
             {event.isRegistrationOpen ? (
               <a href={event.registrationLink} className="dossier-action-btn active" target="_blank" rel="noreferrer">
-                INITIATE_REGISTRATION
+                INITIATE  REGISTRATION
               </a>
             ) : (
               <div className="dossier-action-btn disabled">
-                REGISTRATION_LOCKED
+                REGISTRATION  LOCKED
               </div>
             )}
           </footer>

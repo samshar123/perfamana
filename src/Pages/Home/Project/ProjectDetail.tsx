@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import projectData from '../../../../src/data/projects.json';
 import "./projectDetail.css"
@@ -7,6 +7,11 @@ const ProjectDetail: React.FC = () => {
   // useParams grabs the ':id' from the URL (e.g., /projects/stealth-gtr)
   const { id } = useParams<{ id: string }>();
   
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  
   // Find the specific project in your JSON data
   const project = projectData.projects.find(p => p.id === id);
 
@@ -14,8 +19,8 @@ const ProjectDetail: React.FC = () => {
   if (!project) {
     return (
       <div className="pd-not-found">
-        <h2>ERROR_404: MODULE_NOT_FOUND</h2>
-        <Link to="/" className="pd-back-link">RETURN_TO_BASE</Link>
+        <h2>ERROR  404:  MODULE  NOT  FOUND</h2>
+        <Link to="/" className="pd-back-link">RETURN  TO  BASE</Link>
       </div>
     );
   }
@@ -25,7 +30,7 @@ const ProjectDetail: React.FC = () => {
       {/* HEADER WITH LINK */}
       <header className="pd-header">
         <Link to="/" className="pd-back">
-           <span className="back-arrow">←</span> // EXIT_ARCHIVE
+           <span className="back-arrow">←</span> EXIT  ARCHIVE
         </Link>
         <div className="pd-header-main">
             <span className="pd-id-tag">REF: {project.id.toUpperCase()}</span>
@@ -36,14 +41,14 @@ const ProjectDetail: React.FC = () => {
       {/* BEFORE & AFTER COMPARISON */}
       <section className="pd-comparison">
         <div className="pd-side pre-build">
-          <div className="pd-label">PRE_BUILD_STATE</div>
+          <div className="pd-label">PRE  BUILD  STATE</div>
           <div className="pd-img-wrapper">
              <img src={project.oldImage} alt="Original Vehicle Condition" />
           </div>
         </div>
         
         <div className="pd-side post-build">
-          <div className="pd-label">POST_BUILD_STATE</div>
+          <div className="pd-label">POST  BUILD  STATE</div>
           <div className="pd-img-wrapper">
              <img src={project.newImage} alt="Modified Performance Result" />
           </div>
@@ -53,17 +58,17 @@ const ProjectDetail: React.FC = () => {
       <section className="pd-description-section">
   <div className="pd-desc-grid">
     <div className="pd-brief">
-      <div className="pd-section-tag">// PROJECT_BRIEF</div>
+      <div className="pd-section-tag">PROJECT  BRIEF</div>
       <p className="pd-main-text">{project.description}</p>
     </div>
     
     <div className="pd-specs-sidebar">
-      <div className="pd-section-tag">// TECH_SPECS</div>
+      <div className="pd-section-tag">TECH  SPECS</div>
       <ul className="pd-spec-list">
         <li><span>CATEGORY:</span> {project.category}</li>
-        <li><span>LOCATION:</span> CALICUT_LAB</li>
-        <li><span>ENGINEERING:</span> STAGE_3</li>
-        <li><span>STATUS:</span> 100%_COMPLETED</li>
+        <li><span>LOCATION:</span> CALICUT  LAB</li>
+        <li><span>ENGINEERING:</span> STAGE  3</li>
+        <li><span>STATUS:</span> 100%  COMPLETED</li>
       </ul>
     </div>
   </div>

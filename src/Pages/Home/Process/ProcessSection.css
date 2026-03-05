@@ -7,9 +7,10 @@
 }
 
 .proc-root {
-  background: var(--pr-white); /* Pure White Theme */
+  background: var(--pr-white);
+  /* Pure White Theme */
   position: relative;
-  height: 500vh; 
+  height: 500vh;
 }
 
 .proc-sticky-wrapper {
@@ -34,127 +35,199 @@
 }
 
 /* --- THE WHEEL (Updated for White Theme) --- */
-.proc-visual-center { display: flex; flex-direction: column; align-items: center; gap: 40px; }
-
-.proc-id-display { 
-  font-family: var(--font-smooth); 
-  font-weight: 800; 
-  color: var(--pr-red); 
-  letter-spacing: 4px; 
-  font-size: 0.75rem; 
+.proc-visual-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
 }
 
-.proc-alloy-wheel { 
-  width: 320px; 
-  height: 320px; 
-  position: relative; 
-  border-radius: 50%; 
-  background: radial-gradient(circle, #f9f9f9, #eee); 
-  box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+.proc-id-display {
+  font-family: var(--font-smooth);
+  font-weight: 800;
+  color: var(--pr-red);
+  letter-spacing: 4px;
+  font-size: 0.75rem;
 }
 
-.wheel-tire { 
-  position: absolute; 
-  inset: -12px; 
-  border: 18px solid #1a1a1a; /* Heavy contrast tire */
-  border-radius: 50%; 
-}
-
-.spoke-unit {
-  position: absolute; top: 10%; left: 50%;
-  width: 8px; height: 40%;
-  background: linear-gradient(to bottom, var(--pr-red), #ddd); /* Softer spoke gradient */
-  transform-origin: bottom center;
-  border-radius: 4px; /* Smooth edge spokes */
-}
-
-.wheel-caliper {
-  position: absolute; top: 15%; right: 10%; width: 24px; height: 70px;
-  background: var(--pr-red); 
-  border-radius: 8px; /* Smooth rounded caliper */
-  transform: rotate(15deg);
-  z-index: 5; 
-  box-shadow: 0 10px 20px rgba(227, 24, 55, 0.3);
-}
-
-.wheel-center-cap {
-  position: absolute; top: 50%; left: 50%; width: 45px; height: 45px;
-  background: var(--pr-white); 
-  border: 2px solid var(--pr-red); 
-  border-radius: 50%;
-  transform: translate(-50%, -50%); 
-  z-index: 10;
+.proc-wheel-container {
+  position: relative;
+  width: 380px;
+  height: 380px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+.proc-alloy-wheel {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 2;
+  will-change: transform;
+}
+
+.wheel-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  /* Optional: drop shadow to ground the wheel slightly */
+  filter: drop-shadow(0px 20px 30px rgba(0, 0, 0, 0.15));
+}
+
+/* --- SMOKE EFFECT --- */
+.smoke-container {
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 100px;
+  z-index: 1;
+  /* Behind the wheel */
+  pointer-events: none;
+  opacity: 0.8;
+  mix-blend-mode: multiply;
+  /* Works well on white background */
+}
+
+.smoke-particle {
+  position: absolute;
+  bottom: 0px;
+  background: radial-gradient(circle, rgba(150, 150, 150, 0.4) 0%, rgba(200, 200, 200, 0) 70%);
+  border-radius: 50%;
+  filter: blur(8px);
+  animation: smokeRise 3s infinite cubic-bezier(0.2, 0.8, 0.4, 1);
+  opacity: 0;
+}
+
+.p1 {
+  width: 180px;
+  height: 100px;
+  left: 10%;
+  animation-delay: 0s;
+  animation-duration: 3.5s;
+}
+
+.p2 {
+  width: 200px;
+  height: 120px;
+  left: 35%;
+  animation-delay: 0.8s;
+  animation-duration: 4s;
+}
+
+.p3 {
+  width: 160px;
+  height: 90px;
+  right: 15%;
+  animation-delay: 1.5s;
+  animation-duration: 3.2s;
+}
+
+@keyframes smokeRise {
+  0% {
+    transform: translateY(10px) scale(0.8) rotate(0deg);
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 0.6;
+  }
+
+  50% {
+    transform: translateY(-20px) scale(1.4) rotate(15deg);
+    opacity: 0.4;
+  }
+
+  100% {
+    transform: translateY(-40px) scale(1.8) rotate(30deg);
+    opacity: 0;
+  }
+}
+
 .STATUS_IN_PROGRESS {
-  color: var(--pr-black); /* Dark text for white theme */
+  color: var(--pr-black);
+  /* Dark text for white theme */
   font-family: var(--font-smooth);
   font-weight: 700;
   font-size: 14px;
 }
 
-.status-ready { 
-  color: var(--pr-red); 
+.status-ready {
+  color: var(--pr-red);
   font-family: var(--font-smooth);
   font-weight: 800;
-  font-size: 14px; 
+  font-size: 14px;
 }
 
 /* --- THE DATA SIDE --- */
-.proc-data-side { height: 75vh; display: flex; flex-direction: column; justify-content: space-evenly; }
+.proc-data-side {
+  height: 75vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
 
-.proc-kicker { 
-  font-family: var(--font-smooth); 
-  font-size: 0.7rem; 
-  color: var(--pr-red); 
-  letter-spacing: 4px; 
+.proc-kicker {
+  font-family: var(--font-smooth);
+  font-size: 0.7rem;
+  color: var(--pr-red);
+  letter-spacing: 4px;
   font-weight: 800;
 }
 
-.proc-section-title { 
-  font-family: var(--font-smooth); 
-  font-size: clamp(2rem, 5vw, 4rem); 
-  font-weight: 800; 
-  color: var(--pr-black); 
-  line-height: 1; 
-  letter-spacing: -2px;
+.proc-section-title {
+  font-family: var(--font-smooth);
+  font-size: clamp(1.5rem, 4vw, 3rem);
+  font-weight: 800;
+  color: var(--pr-red);
+  line-height: 1;
+  word-spacing: 8px;
 }
 
-.proc-step-unit { margin: 40px 0; }
+.proc-step-unit {
+  margin: 40px 0;
+  background: var(--pr-white);
+  border: 2px solid var(--pr-gray);
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
 
-.step-number { 
-  font-family: var(--font-smooth); 
-  font-weight: 800; 
-  color: var(--pr-red); 
+.proc-step-unit:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
+}
+
+.step-number {
+  font-family: var(--font-smooth);
+  font-weight: 800;
+  color: var(--pr-red);
   font-size: 1.2rem;
 }
 
-.step-line { 
-  flex: 1; 
-  height: 2px; 
-  background: linear-gradient(to right, var(--pr-red), transparent); 
-  border-radius: 10px;
+.step-line {
+  display: none;
 }
 
-.step-name { 
-  font-family: var(--font-smooth); 
-  font-size: 2rem; 
-  color: var(--pr-black); 
+.step-name {
+  font-family: var(--font-smooth);
+  font-size: 2rem;
+  color: var(--pr-black);
   font-weight: 800;
-  line-height: 1.1; 
+  line-height: 1.1;
   letter-spacing: -1px;
 }
 
-.step-info { 
-  color: #555; 
-  line-height: 1.8; 
-  margin-top: 20px; 
-  font-size: 1rem; 
+.step-info {
+  color: #555;
+  line-height: 1.8;
+  margin-top: 20px;
+  font-size: 1rem;
   font-weight: 500;
-  max-width: 500px; 
+  max-width: 500px;
 }
 
 /* --- THE TACTICAL BUTTON (Smooth & Bold) --- */
@@ -167,7 +240,8 @@
   text-decoration: none;
   font-family: var(--font-smooth);
   font-weight: 800;
-  border-radius: 50px; /* Pill Shape for smooth look */
+  border-radius: 50px;
+  /* Pill Shape for smooth look */
   letter-spacing: 1px;
   display: flex;
   align-items: center;
@@ -183,21 +257,35 @@
   color: var(--pr-white);
 }
 
-.btn-final-state .btn-arrow { color: var(--pr-white); }
-
-.proc-tactical-btn:hover { 
-  transform: translateY(-8px); 
-  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+.btn-final-state .btn-arrow {
+  color: var(--pr-white);
 }
 
-.btn-arrow { 
-  color: var(--pr-red); 
+.proc-tactical-btn:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.btn-arrow {
+  color: var(--pr-red);
   font-size: 1.2rem;
-  transition: 0.3s; 
+  transition: 0.3s;
 }
 
 @media (max-width: 1024px) {
-  .proc-main-layout { grid-template-columns: 1fr; gap: 40px; padding-top: 80px; }
-  .proc-visual-center { order: 2; transform: scale(0.9); }
-  .proc-data-side { order: 1; height: auto; }
+  .proc-main-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding-top: 80px;
+  }
+
+  .proc-visual-center {
+    order: 2;
+    transform: scale(0.9);
+  }
+
+  .proc-data-side {
+    order: 1;
+    height: auto;
+  }
 }

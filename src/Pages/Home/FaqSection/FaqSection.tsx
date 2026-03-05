@@ -32,11 +32,11 @@ const FaqSection: React.FC = () => {
       <div className="kq-container">
         <div className="kq-sidebar">
           <div className="kq-sticky">
-            <span className="kq-kicker">// FAQ_DATABASE</span>
-            <h2 className="kq-main-title">TECHNICAL_RESOURCES</h2>
+            <span className="kq-kicker">FAQ  DATABASE</span>
+            <h2 className="kq-main-title">TECHNICAL  RESOURCES</h2>
             <div className="kq-status-bar">
               <div className="status-dot"></div>
-              <span>SYSTEMS_OPERATIONAL</span>
+              <span>SYSTEMS  OPERATIONAL</span>
             </div>
           </div>
         </div>
@@ -70,7 +70,7 @@ const FaqSection: React.FC = () => {
               </div>
             ))
           ) : (
-            <p className="kq-loading">INITIALIZING_DATA_STREAM...</p>
+            <p className="kq-loading">INITIALIZING  DATA  STREAM...</p>
           )}
         </div>
       </div>

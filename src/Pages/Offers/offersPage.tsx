@@ -142,7 +142,7 @@ const OffersPage: React.FC = () => {
                   selectedModelData.offers.map((offer, i) => (
                     <div key={i} className="p-offer-box">
                       <div className="p-offer-info">
-                        <span className="p-offer-id">PRFA_UNIT_0{i+1}</span>
+                        <span className="p-offer-id">PRFA  UNIT  {i+1}</span>
                         <p className="p-offer-txt">{offer}</p>
                       </div>
                       <a  href="https://wa.me/917306096088" 

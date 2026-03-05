@@ -19,7 +19,7 @@ const About: React.FC = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <div className="bp-header">
-              <span className="bp-serial">REF_01_DNA</span>
+              <span className="bp-serial">REF  01  DNA</span>
               <div className="bp-line"></div>
             </div>
 
@@ -81,7 +81,7 @@ const About: React.FC = () => {
               src="../../../../public/Images/about/abt1.jpg" 
               alt="Engine" 
             />
-            <div className="bp-tag-label">MOD_V8_SPEC</div>
+            <div className="bp-tag-label">MOD  V8  SPEC</div>
           </motion.div>
         </div>
       </div>

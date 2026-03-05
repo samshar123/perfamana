@@ -9,7 +9,8 @@
 }
 
 .fcta-root {
-  background: var(--fcta-white); /* Pure White Theme */
+  background: var(--fcta-white);
+  /* Pure White Theme */
   padding: 120px 0 180px;
   position: relative;
   overflow: hidden;
@@ -46,40 +47,101 @@
 .fcta-car-mask {
   position: relative;
   z-index: 1;
-  will-change: transform, opacity;
-  transform-style: preserve-3d;
-  /* Smoother masking for white theme */
-  mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+  width: max-content;
+  will-change: transform;
 }
 
 .fcta-car-img {
-  width: 500px;
+  width: 700px;
   height: auto;
-  filter: brightness(1) contrast(1.05); /* Brighter for white theme */
+  filter: brightness(1) contrast(1.05);
+  /* Brighter for white theme */
   display: block;
   margin-bottom: 45px;
   image-rendering: high-quality;
 }
 
-/* Headlight Glow Effect (Refined for light background) */
-.fcta-light-flare {
-  position: absolute;
-  top: 45%;
-  width: 180px;
-  height: 180px;
-  background: radial-gradient(circle, rgba(227, 24, 55, 0.15) 0%, transparent 70%);
-  filter: blur(30px);
-  z-index: 2;
-  animation: lightPulse 4s infinite alternate;
+.fcta-car-rolling {
+  animation: roughTerrain 0.4s infinite alternate cubic-bezier(0.4, 0, 0.6, 1);
 }
 
-.fcta-light-flare.left { left: 10%; }
-.fcta-light-flare.right { right: 10%; }
+@keyframes roughTerrain {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
 
-@keyframes lightPulse {
-  0% { opacity: 0.4; transform: scale(1); }
-  100% { opacity: 0.8; transform: scale(1.3); }
+  50% {
+    transform: translateY(-1.5px) rotate(0.1deg);
+  }
+
+  100% {
+    transform: translateY(0.5px) rotate(-0.05deg);
+  }
+}
+
+/* Dust Trail Effects */
+.fcta-dust-container {
+  position: absolute;
+  bottom: 25px;
+  left: 20px;
+  /* Brought closer to rear exhaust/wheel area */
+  width: 150px;
+  height: 80px;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.dust {
+  position: absolute;
+  bottom: 0;
+  background: rgba(220, 215, 205, 0.85);
+  /* Heavier, more opaque smoke */
+  border-radius: 50%;
+  filter: blur(8px);
+  animation: dustCloud 1.2s infinite linear;
+  opacity: 0;
+}
+
+.dust-1 {
+  left: 40px;
+  width: 80px;
+  height: 60px;
+  animation-delay: 0s;
+}
+
+.dust-2 {
+  left: 0px;
+  width: 100px;
+  height: 75px;
+  animation-delay: 0.25s;
+}
+
+.dust-3 {
+  left: 20px;
+  width: 70px;
+  height: 50px;
+  animation-delay: 0.5s;
+}
+
+.dust-4 {
+  left: -30px;
+  width: 90px;
+  height: 65px;
+  animation-delay: 0.75s;
+}
+
+@keyframes dustCloud {
+  0% {
+    transform: translateX(0) scale(0.4);
+    opacity: 0.9;
+    filter: blur(6px);
+  }
+
+  100% {
+    transform: translateX(-200px) scale(3.5);
+    opacity: 0;
+    filter: blur(25px);
+  }
 }
 
 /* --- CONTENT --- */
@@ -87,7 +149,7 @@
   text-align: center;
   position: relative;
   z-index: 10;
-  margin-top: -80px; 
+  margin-top: -80px;
   padding: 0 5%;
 }
 
@@ -105,12 +167,15 @@
   font-size: clamp(2.5rem, 6vw, 4.5rem);
   font-weight: 800;
   color: var(--fcta-black);
-  letter-spacing: -3px; /* Tight for smooth look */
+  letter-spacing: -3px;
+  /* Tight for smooth look */
   margin: 20px 0;
   line-height: 1.1;
 }
 
-.text-red { color: var(--fcta-red); }
+.text-red {
+  color: var(--fcta-red);
+}
 
 .fcta-sub-desc {
   font-family: var(--font-smooth);
@@ -135,7 +200,8 @@
   font-weight: 800;
   font-size: 0.9rem;
   letter-spacing: 1px;
-  border-radius: 60px; /* Full smooth pill shape */
+  border-radius: 60px;
+  /* Full smooth pill shape */
   position: relative;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
@@ -158,8 +224,15 @@
 }
 
 @keyframes btnPulse {
-  0% { transform: scale(1); opacity: 0.8; }
-  100% { transform: scale(1.15, 1.4); opacity: 0; }
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: scale(1.15, 1.4);
+    opacity: 0;
+  }
 }
 
 .btn-icon {
@@ -167,14 +240,35 @@
   transition: 0.4s;
 }
 
-.fcta-whatsapp-btn:hover .btn-icon { 
-  transform: translateX(5px) scale(1.1); 
+.fcta-whatsapp-btn:hover .btn-icon {
+  transform: translateX(5px) scale(1.1);
 }
 
 @media (max-width: 768px) {
-  .fcta-root { padding: 80px 0 120px; }
-  .fcta-content { margin-top: -40px; }
-  .fcta-main-heading { font-size: 2.2rem; letter-spacing: -1.5px; }
-  .fcta-light-flare { width: 100px; height: 100px; }
-  .fcta-whatsapp-btn { width: 90%; justify-content: center; }
+  .fcta-root {
+    padding: 80px 0 120px;
+  }
+
+  .fcta-content {
+    margin-top: -40px;
+  }
+
+  .fcta-main-heading {
+    font-size: 2.2rem;
+    letter-spacing: -1.5px;
+  }
+
+  .fcta-car-img {
+    width: 350px;
+  }
+
+  .fcta-dust-container {
+    left: -40px;
+    transform: scale(0.7);
+  }
+
+  .fcta-whatsapp-btn {
+    width: 90%;
+    justify-content: center;
+  }
 }

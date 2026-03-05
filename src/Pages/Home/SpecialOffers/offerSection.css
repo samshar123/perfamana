@@ -3,7 +3,8 @@
   --bg-white: #ffffff;
   --text-main: black;
   --text-muted: #666666;
-  --font-smooth: 'Plus Jakarta Sans', sans-serif; /* Smooth edge bold font */
+  --font-smooth: 'Plus Jakarta Sans', sans-serif;
+  /* Smooth edge bold font */
 }
 
 .ign-viewport {
@@ -25,13 +26,13 @@
   height: 100%;
   object-fit: cover;
   /* Brighter, cleaner look for white theme */
-  
+
   transition: 1.2s cubic-bezier(0.16, 1, 0.3, 1);
   z-index: 1;
 }
 
 .active-launch .ign-video {
-  filter: grayscale(0) brightness(1) contrast(1);
+  filter: brightness(1) contrast(1);
   transform: scale(1.05);
 }
 
@@ -40,7 +41,8 @@
   font-family: var(--font-smooth);
   font-size: 25vw;
   font-weight: 800;
-  color: rgba(255, 255, 255, 0.03); /* Subtle dark gray instead of white opacity */
+  color: rgba(255, 255, 255, 0.03);
+  /* Subtle dark gray instead of white opacity */
   z-index: 2;
   pointer-events: none;
   letter-spacing: -10px;
@@ -83,7 +85,8 @@
   font-size: clamp(3.5rem, 10vw, 8.5rem);
   font-weight: 800;
   line-height: 0.85;
-  letter-spacing: -4px; /* Smoother letter spacing */
+  letter-spacing: -4px;
+  /* Smoother letter spacing */
   color: var(--bg-white);
   margin-bottom: 50px;
 }
@@ -114,11 +117,12 @@
   background: var(--bg-white);
   border: none;
   padding: 30px 60px;
-  border-radius: 50px; /* Smooth rounded pill shape */
+  border-radius: 50px;
+  /* Smooth rounded pill shape */
   cursor: pointer;
   overflow: hidden;
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .ign-btn-text {
@@ -135,7 +139,8 @@
   position: absolute;
   inset: 0;
   background: var(--red);
-  transform: translateY(101%); /* Vertical fill for a modern feel */
+  transform: translateY(101%);
+  /* Vertical fill for a modern feel */
   transition: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -156,7 +161,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-   /* White fade instead of red */
+  /* White fade instead of red */
 }
 
 .ign-speed-stripe {
@@ -176,7 +181,11 @@
   z-index: 101;
 }
 
-@keyframes blink { 50% { opacity: 0.3; } }
+@keyframes blink {
+  50% {
+    opacity: 0.3;
+  }
+}
 
 @media (max-width: 920px) {
   .ign-bold-title {
@@ -184,11 +193,13 @@
     letter-spacing: -2px;
     margin-bottom: 40px;
   }
+
   .ign-bottom-row {
     flex-direction: column;
     align-items: flex-start;
     gap: 30px;
   }
+
   .ign-massive-trigger {
     width: 100%;
     padding: 25px;

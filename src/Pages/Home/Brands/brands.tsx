@@ -24,8 +24,8 @@ const Brands: React.FC = () => {
       <div className="fs-container">
         
         <div className="fs-info-panel">
-          <div className="fs-glitch-text">AUTHENTIC_PARTS</div>
-          <h2 className="fs-main-heading">TRUSTED_BY_<br/>ENGINEERS</h2>
+          <div className="fs-glitch-text">AUTHENTIC  PARTS</div>
+          <h2 className="fs-main-heading">TRUSTED BY <br/>ENGINEERS</h2>
           <div className="fs-meter">
             <div className="fs-meter-fill"></div>
           </div>
@@ -38,7 +38,7 @@ const Brands: React.FC = () => {
               <div key={i} className="fs-item">
                 <div className="fs-hex-bracket"></div>
                 <img src={brand.img} alt={brand.name} className="fs-logo" />
-                <span className="fs-serial">PVL_{i.toString().padStart(3, '0')}</span>
+                <span className="fs-serial">PVL  {i.toString().padStart(3, '0')}</span>
               </div>
             ))}
           </div>

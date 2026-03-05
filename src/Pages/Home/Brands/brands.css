@@ -4,11 +4,13 @@
   --card-bg: #f9f9f9;
   --text-main: #0a0a0a;
   --text-muted: #999;
-  --font-smooth: 'Plus Jakarta Sans', sans-serif; /* High-end smooth edge font */
+  --font-smooth: 'Plus Jakarta Sans', sans-serif;
+  /* High-end smooth edge font */
 }
 
 .fs-section {
-  background: var(--bg-white); /* Pure White Background */
+  background: var(--bg-white);
+  /* Pure White Background */
   height: 250px;
   border-top: 1px solid #eeeeee;
   border-bottom: 1px solid #eeeeee;
@@ -35,7 +37,8 @@
 }
 
 .fs-glitch-text {
-  font-family: 'Orbitron'; /* Kept for small technical detail */
+  font-family: var(--font-smooth);
+  /* Kept for small technical detail */
   font-size: 0.6rem;
   font-weight: 800;
   color: var(--red);
@@ -44,7 +47,8 @@
 }
 
 .fs-main-heading {
-  font-family: var(--font-smooth); /* Smooth edge bold font */
+  font-family: var(--font-smooth);
+  /* Smooth edge bold font */
   font-size: 1.6rem;
   color: var(--text-main);
   line-height: 1.2;
@@ -58,7 +62,8 @@
   background: #f0f0f0;
   margin-top: 20px;
   position: relative;
-  border-radius: 10px; /* Smooth rounded edges */
+  border-radius: 10px;
+  /* Smooth rounded edges */
 }
 
 .fs-meter-fill {
@@ -81,18 +86,20 @@
 }
 
 .fs-filmstrip-track {
-    display: flex;
-    gap: 30px;
-    width: max-content;
-    padding-top: 20px;
-    animation: slideBrands 25s linear infinite;
+  display: flex;
+  gap: 30px;
+  width: max-content;
+  padding-top: 20px;
+  animation: slideBrands 25s linear infinite;
 }
+
 .fs-item {
   width: 200px;
   height: 120px;
   background: #fff;
   border: 1px solid #f0f0f0;
-  border-radius: 12px; /* Smooth edge cards */
+  border-radius: 12px;
+  /* Smooth edge cards */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -115,7 +122,8 @@
   max-width: 110px;
   height: 65px;
   object-fit: contain;
-  filter: opacity(0.8); /* Muted for white theme */
+  filter: opacity(0.8);
+  /* Muted for white theme */
   transition: 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
@@ -123,7 +131,7 @@
   position: absolute;
   top: 10px;
   right: 12px;
-  font-family: 'Orbitron';
+  font-family: var(--font-smooth);
   font-size: 0.45rem;
   color: #ccc;
   font-weight: 700;
@@ -133,12 +141,13 @@
 .fs-item:hover {
   background: #fff;
   border-color: var(--red);
-  transform: translateY(-5px); /* Smooth lift instead of just scale */
+  transform: translateY(-5px);
+  /* Smooth lift instead of just scale */
   box-shadow: 0 15px 30px rgba(227, 24, 55, 0.08);
 }
 
 .fs-item:hover .fs-logo {
-  filter: grayscale(0) opacity(1);
+  filter: opacity(1);
   transform: scale(1.1);
 }
 
@@ -148,14 +157,33 @@
 
 /* ANIMATIONS */
 @keyframes slideBrands {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 /* MOBILE */
 @media (max-width: 900px) {
-  .fs-container { flex-direction: column; align-items: flex-start; gap: 30px; }
-  .fs-section { height: auto; padding: 50px 0; }
-  .fs-filmstrip-wrap { width: 100%; }
-  .fs-main-heading { font-size: 1.3rem; }
+  .fs-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 30px;
+  }
+
+  .fs-section {
+    height: auto;
+    padding: 50px 0;
+  }
+
+  .fs-filmstrip-wrap {
+    width: 100%;
+  }
+
+  .fs-main-heading {
+    font-size: 1.3rem;
+  }
 }

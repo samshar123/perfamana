@@ -59,7 +59,7 @@ const AllEvents: React.FC = () => {
 
       <main className="archive-grid-container">
         <div className="archive-results-count">
-          FOUND_{filteredEvents.length}_RECORDS_MATCHING_CRITERIA
+          FOUND {filteredEvents.length}  RECORDS  MATCHING  CRITERIA
         </div>
 
         <motion.div layout className="archive-grid">
@@ -78,7 +78,7 @@ const AllEvents: React.FC = () => {
                   <div className="archive-img-wrapper">
                     <img src={event.heroImage} alt={event.title} />
                     <div className={`status-tag ${event.isRegistrationOpen ? 'live' : 'archived'}`}>
-                      {event.isRegistrationOpen ? 'LIVE_STATUS' : 'ARCHIVED'}
+                      {event.isRegistrationOpen ? 'LIVE  STATUS' : 'ARCHIVED'}
                     </div>
                   </div>
                   
@@ -90,7 +90,7 @@ const AllEvents: React.FC = () => {
                     <h3 className="archive-card-title">{event.title}</h3>
                     <div className="archive-card-footer">
                       <span className="archive-card-loc">{event.location}</span>
-                      <span className="archive-card-arrow">READ_DATA →</span>
+                      <span className="archive-card-arrow">READ  DATA  →</span>
                     </div>
                   </div>
                 </Link>
@@ -101,7 +101,7 @@ const AllEvents: React.FC = () => {
 
         {filteredEvents.length === 0 && (
           <div className="archive-empty">
-            NO_RECORDS_FOUND_IN_THE_SPECIFIED_SECTOR.
+            NO  RECORDS  FOUND  IN  THE  SPECIFIED  SECTOR.
           </div>
         )}
       </main>

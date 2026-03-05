@@ -15,8 +15,8 @@ const Project: React.FC = () => {
 
       <div className="pj-container">
         <header className="pj-header">
-          <div className="pj-meta">// ARCHIVE_LOG_2026</div>
-          <h2 className="pj-main-title">PROJECT_DATABASE</h2>
+          <div className="pj-meta">ARCHIVE  LOG  2026</div>
+          <h2 className="pj-main-title">PROJECT  DATABASE</h2>
           <p className="pj-subtitle">Detailed dossiers of our most aggressive transformations.</p>
         </header>
 
@@ -45,13 +45,13 @@ const Project: React.FC = () => {
 
                 <div className="pj-content">
                   <div className="pj-header-row">
-                    <span className="pj-index">0{index + 1}</span>
+                    <span className="pj-index">{index + 1}</span>
                     <h3 className="pj-card-title">{project.title}</h3>
                   </div>
                   <p className="pj-card-desc">{project.description}</p>
                   
                   <div className="pj-card-footer">
-                    <span className="pj-view-link">OPEN_DOSSIER</span>
+                    <span className="pj-view-link">OPEN  DOSSIER</span>
                     <div className="pj-arrow">→</div>
                   </div>
                 </div>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import serviceData from '../../../../src/data/services.json'
 import './ServiceDetail.css';
@@ -7,12 +7,17 @@ const ServiceDetail: React.FC = () => {
   const { id } = useParams();
   const data = serviceData.services.find(s => s.id === id);
 
-  if (!data) return <div className="not-found">MODULE_NOT_FOUND</div>;
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  if (!data) return <div className="not-found">MODULE  NOT  FOUND</div>;
 
   return (
     <div className="sd-viewport">
       <nav className="sd-nav">
-        <Link to="/" className="sd-back">← BACK_TO_LAB</Link>
+        <Link to="/" className="sd-back">← BACK  TO  LAB</Link>
     
       </nav>
 
@@ -27,7 +32,7 @@ const ServiceDetail: React.FC = () => {
 
       <section className="sd-specs">
         <div className="spec-card">
-          <h5>PROCESS_ENGINEERING</h5>
+          <h5>PROCESS  ENGINEERING</h5>
           <p>Every phase is measured against factory tolerances and performance benchmarks. Our {data.title} module ensures zero-compromise results.</p>
         </div>
         <div className="spec-visual">

@@ -1,34 +1,67 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useRef, useEffect } from "react";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import "./finalcta.css";
 
 const FinalCTA: React.FC = () => {
+  const ctaRef = useRef<HTMLElement>(null);
+
+  // Real on-scroll movement from left to right
+  const { scrollYProgress } = useScroll({
+    target: ctaRef,
+    offset: ["start end", "end start"],
+  });
+
+  // Calculate raw scroll offset (-100 to 100)
+  const rawCarX = useTransform(scrollYProgress, [0, 1], [-100, 100]);
+
+  // Spring value drives actual animation, initialized to -100 so it starts left
+  const springCarX = useSpring(-100, {
+    stiffness: 45,
+    damping: 25,
+    mass: 1,
+    restDelta: 0.001
+  });
+
+  useEffect(() => {
+    // Sync the spring target whenever scroll changes
+    const unsubscribe = rawCarX.on("change", (latest) => {
+      springCarX.set(latest);
+    });
+    // Trigger initial spring target right after mount so it visually drives in
+    springCarX.set(rawCarX.get());
+    return unsubscribe;
+  }, [rawCarX, springCarX]);
+
+  // Map spring numeric value back to a vw string
+  const carX = useTransform(springCarX, (x) => `${x}vw`);
+
   return (
-    <section id="cta" className="fcta-root">
+    <section id="cta" className="fcta-root" ref={ctaRef}>
       <div className="fcta-container">
-        {/* MAIN VISUAL: SLOW CINEMATIC ZOOM */}
+        {/* MAIN VISUAL: SCROLL-DRIVEN MOVEMENT */}
         <div className="fcta-visual-wrap">
           <div className="fcta-perspective-layer">
             <motion.div
               className="fcta-car-mask"
-              // Start further back and more transparent for a longer travel feel
-              initial={{ opacity: 0, scale: 0.3, z: -500 }}
-              whileInView={{ opacity: 1, scale: 1, z: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{
-                duration: 3.0, // Increased to 3 seconds for a slow, majestic arrival
-                ease: [0.19, 1, 0.22, 1], // Ultra-smooth power-out curve
-                delay: 0.2,
-              }}
+              style={{ x: carX }}
             >
+              {/* Dust particles */}
+              <div className="fcta-dust-container">
+                <span className="dust dust-1"></span>
+                <span className="dust dust-2"></span>
+                <span className="dust dust-3"></span>
+                <span className="dust dust-4"></span>
+                <span className="dust dust-5"></span>
+                <span className="dust dust-6"></span>
+                <span className="dust dust-7"></span>
+                <span className="dust dust-8"></span>
+              </div>
+
               <img
-                src="/Images/ctaimg.png"
+                src="/Images/tacoma.webp"
                 alt="Perfamana Modified Performance"
-                className="fcta-car-img"
+                className="fcta-car-img fcta-car-rolling"
               />
-              <div className="fcta-light-flare left"></div>
-              <div className="fcta-light-flare right"></div>
-              <div className="fcta-overlay-vignette"></div>
             </motion.div>
           </div>
         </div>
@@ -42,7 +75,7 @@ const FinalCTA: React.FC = () => {
             // Text waits for the car to almost finish its 3s journey
             transition={{ duration: 1, delay: 0.5 }}
           >
-            <span className="fcta-kicker">// MISSION_COMPLETE?</span>
+            <span className="fcta-kicker">MISSION  COMPLETE?</span>
             <h2 className="fcta-main-heading">
               FROM FOUR WHEELS TO TWO, <br />
               WE’VE GOT YOUR <span className="text-red">MODS COVERED!</span>

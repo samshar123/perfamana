@@ -27,7 +27,7 @@
 }
 
 .prism-kicker {
-  font-family: 'Orbitron'; /* Technical kicker kept for branding */
+  font-family: var(--font-smooth); /* Technical kicker kept for branding */
   font-size: 0.65rem;
   color: var(--p-red);
   letter-spacing: 5px;
@@ -170,7 +170,7 @@
 }
 
 .prism-stat label {
-  font-family: 'Orbitron';
+  font-family: var(--font-smooth);
   font-size: 0.55rem;
   color: var(--p-red);
   letter-spacing: 2px;
