@@ -67,10 +67,10 @@ const Landing: React.FC = () => {
         <div className="industrial-frame top-right"></div>
         <div className="industrial-frame bottom-left"></div>
         <div className="tech-block b-1">
-          <span>UNIT_720</span>
+          <span>UNIT  720</span>
         </div>
         <div className="tech-block b-2">
-          <span>LAB_04</span>
+          <span>LAB  04</span>
         </div>
       </div>
 
@@ -136,7 +136,7 @@ const Landing: React.FC = () => {
             <div key={i} className={`dot ${index === i ? "active" : ""}`} />
           ))}
         </div>
-        <div className="pf-loc">CALICUT // KERALA</div>
+        <div className="pf-loc"><h3 style={{fontFamily:"var(--font-smooth)"}}>CALICUT KERALA</h3> </div>
       </footer>
     </section>
   );

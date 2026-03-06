@@ -61,7 +61,7 @@ const Navbar: React.FC = () => {
                 className="nav-link-item"
               >
                 <div className="link-hover-effect"></div>
-                <span className="link-index">0{i + 1}</span>
+                <span className="link-index">{i + 1}</span>
                 <span className="link-text">{link.name}</span>
               </a>
             ))}
@@ -89,7 +89,7 @@ const Navbar: React.FC = () => {
           >
             <button className="mobile-close-btn" onClick={() => setIsMenuOpen(false)}>
               <div className="close-circle"><div className="close-x"></div></div>
-              <span className="close-label">CLOSE_INTERFACE</span>
+              <span className="close-label">CLOSE  INTERFACE</span>
             </button>
 
             <div className="mobile-nav-content">
@@ -106,7 +106,7 @@ const Navbar: React.FC = () => {
                       onClick={(e) => handleScrollTo(e, link.path)}
                       className="mobile-link-anchor"
                     >
-                      <span className="m-index">0{i + 1}</span>
+                      <span className="m-index">{i + 1}</span>
                       <span className="m-text">{link.name}</span>
                     </a>
                   </motion.div>

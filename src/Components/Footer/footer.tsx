@@ -15,14 +15,14 @@ const Footer: React.FC = () => {
             <p className="gt-brand-tagline">ENGINEERING PERFECTION SINCE 2017</p>
           </div>
           <div className="gt-contact-col">
-            <span className="gt-label">// HEAD_OFFICE</span>
+            <span className="gt-label">HEAD  OFFICE</span>
             <address className="gt-address">
               Rise TBI, Arrekode, <br />
               Malappuram, Kerala 673639
             </address>
           </div>
           <div className="gt-social-col">
-            <span className="gt-label">// CONNECT SOCIAL</span>
+            <span className="gt-label">CONNECT  SOCIAL</span>
             <div className="gt-social-links">
               <a href="https://instagram.com/samshar.dotco" target="_blank">INSTAGRAM</a>
               <a href="https://linkedin.com/in/samshar-for-marketing" target="_blank">LINKEDIN</a>

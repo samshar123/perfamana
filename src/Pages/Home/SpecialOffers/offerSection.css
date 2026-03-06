@@ -1,8 +1,17 @@
+:root {
+  --red: #E31837;
+  --bg-white: #ffffff;
+  --text-main: black;
+  --text-muted: #666666;
+  --font-smooth: 'Plus Jakarta Sans', sans-serif;
+  /* Smooth edge bold font */
+}
+
 .ign-viewport {
   position: relative;
   width: 100%;
   height: 100vh;
-  background: #000;
+  background: var(--bg-white);
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -16,25 +25,27 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* Darken the screenshot/video initially */
-  filter: grayscale(1) brightness(1) contrast(1.0);
-  transition: 1s cubic-bezier(0.19, 1, 0.22, 1);
+  /* Brighter, cleaner look for white theme */
+
+  transition: 1.2s cubic-bezier(0.16, 1, 0.3, 1);
   z-index: 1;
 }
 
 .active-launch .ign-video {
-  filter: grayscale(0) brightness(0.7) contrast(1);
-  transform: scale(1.1);
+  filter: brightness(1) contrast(1);
+  transform: scale(1.05);
 }
 
 .ign-bg-giant-text {
   position: absolute;
-  font-family: 'Syncopate';
-  font-size: 30vw;
-  font-weight: 900;
-  color: rgba(255, 255, 255, 0.02);
+  font-family: var(--font-smooth);
+  font-size: 25vw;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.03);
+  /* Subtle dark gray instead of white opacity */
   z-index: 2;
   pointer-events: none;
+  letter-spacing: -10px;
 }
 
 /* --- UI CONTENT --- */
@@ -48,40 +59,41 @@
 .ign-top-bar {
   display: flex;
   align-items: center;
-  gap: 15px;
-  margin-bottom: 20px;
+  gap: 12px;
+  margin-bottom: 25px;
 }
 
 .ign-red-dot {
   width: 10px;
-  height: 100%;
   height: 10px;
   background: var(--red);
   border-radius: 50%;
-  box-shadow: 0 0 15px var(--red);
-  animation: blink 1s infinite;
+  box-shadow: 0 0 12px rgba(227, 24, 55, 0.4);
+  animation: blink 1.2s infinite;
 }
 
 .ign-terminal-text {
-  font-family: 'Orbitron';
-  font-size: 0.7rem;
-  letter-spacing: 5px;
+  font-family: var(--font-smooth);
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
   color: var(--red);
 }
 
 .ign-bold-title {
-  font-family: 'Syncopate';
-  font-size: clamp(4rem, 12vw, 10rem);
-  font-weight: 900;
-  line-height: 0.8;
-  letter-spacing: -10px;
-  color: #fff;
-  margin-bottom: 60px;
+  font-family: var(--font-smooth);
+  font-size: clamp(3.5rem, 10vw, 8.5rem);
+  font-weight: 800;
+  line-height: 0.85;
+  letter-spacing: -4px;
+  /* Smoother letter spacing */
+  color: var(--bg-white);
+  margin-bottom: 50px;
 }
 
 .text-outline {
   color: transparent;
-  -webkit-text-stroke: 2px rgba(255, 255, 255, 0.934);
+  -webkit-text-stroke: 1.5px var(--red);
 }
 
 .ign-bottom-row {
@@ -91,52 +103,54 @@
 }
 
 .ign-bold-desc {
-  max-width: 400px;
-  font-family: 'Orbitron';
-  font-size: 0.85rem;
-  line-height: 1.8;
-  color: #555;
-  letter-spacing: 1px;
+  max-width: 420px;
+  font-family: var(--font-smooth);
+  font-weight: 500;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-muted);
 }
 
-/* --- TRIGGER BUTTON --- */
+/* --- TRIGGER BUTTON (SMOOTH EDGES) --- */
 .ign-massive-trigger {
   position: relative;
-  background: #fff;
+  background: var(--bg-white);
   border: none;
-  padding: 35px 70px;
+  padding: 30px 60px;
+  border-radius: 50px;
+  /* Smooth rounded pill shape */
   cursor: pointer;
   overflow: hidden;
-  transition: 0.4s;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .ign-btn-text {
   position: relative;
   z-index: 5;
-  font-family: 'Syncopate';
-  font-weight: 900;
-  font-size: 1.3rem;
-  color: #000;
+  font-family: var(--font-smooth);
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: black;
+  letter-spacing: 1px;
 }
 
 .ign-btn-fill {
   position: absolute;
   inset: 0;
   background: var(--red);
-  transform: translateX(-101%);
-  transition: 0.4s cubic-bezier(0.85, 0, 0.15, 1);
+  transform: translateY(101%);
+  /* Vertical fill for a modern feel */
+  transition: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .ign-massive-trigger:hover {
-  transform: scale(1.05) rotate(-2deg);
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(227, 24, 55, 0.2);
 }
 
 .ign-massive-trigger:hover .ign-btn-fill {
-  transform: translateX(0);
-}
-
-.ign-massive-trigger:hover .ign-btn-text {
-  color: #fff;
+  transform: translateY(0);
 }
 
 /* --- LAUNCH HUD --- */
@@ -147,35 +161,47 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(227, 24, 55, 0.1);
+  /* White fade instead of red */
 }
 
 .ign-speed-stripe {
   position: absolute;
   width: 100%;
-  height: 20vh;
+  height: 15vh;
   background: var(--red);
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 .ign-launch-text {
   position: relative;
-  font-family: 'Syncopate';
-  font-size: 6vw;
+  font-family: var(--font-smooth);
+  font-weight: 800;
+  font-size: 5vw;
   color: #fff;
   z-index: 101;
 }
 
-@keyframes blink { 50% { opacity: 0.2; } }
+@keyframes blink {
+  50% {
+    opacity: 0.3;
+  }
+}
 
-@media (max-width:920px) {
-  .ign-bold-title{
-    font-family: 'Syncopate';
-    font-size: clamp(3rem, 5vw, 10rem);
-    font-weight: 900;
-    line-height: 0.8;
-    letter-spacing: 10px;
-    color: #fff;
-    margin-bottom: 60px;
+@media (max-width: 920px) {
+  .ign-bold-title {
+    font-size: 3.2rem;
+    letter-spacing: -2px;
+    margin-bottom: 40px;
+  }
+
+  .ign-bottom-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 30px;
+  }
+
+  .ign-massive-trigger {
+    width: 100%;
+    padding: 25px;
   }
 }

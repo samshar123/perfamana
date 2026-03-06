@@ -24,6 +24,12 @@ const Service: React.FC = () => {
       .catch(err => console.error('Failed to fetch services:', err));
   }, []);
 
+  // Scroll to top and navigate
+  const handleNavigate = (path: string) => {
+    window.scrollTo(0, 0);
+    navigate(path);
+  };
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
   });
@@ -44,9 +50,9 @@ const Service: React.FC = () => {
                 
                 {/* 1. TOP UI BAR */}
                 <div className="hz-card-ui-top">
-                  <span className="hz-serial">REF_0{i + 1}</span>
+                  <span className="hz-serial">REF  {i + 1}</span>
                   <div className="hz-status-dot"></div>
-                  <span className="hz-category">PERFORMANCE_LAB</span>
+                  <span className="hz-category">PERFORMANCE  LAB</span>
                 </div>
 
                 {/* 2. IMAGE WITH FLOATING CORNERS */}
@@ -66,7 +72,7 @@ const Service: React.FC = () => {
                   
                   {/* GLOWING BUTTON */}
                  <div className="gear-btn-wrapper">
-  <button className="gear-gate-btn" onClick={() => navigate(service.path)}>
+  <button className="gear-gate-btn" onClick={() => handleNavigate(service.path)}>
     {/* NEW: CONTINUOUS BORDER TRACE */}
     <svg className="btn-trace-svg">
       <rect className="trace-rect" x="0" y="0" width="100%" height="100%" />
@@ -89,7 +95,7 @@ const Service: React.FC = () => {
 
     {/* Labeling */}
     <div className="gear-label">
-      <span className="label-main">ENGAGE_SPEC</span>
+      <span className="label-main">ENGAGE  SPEC</span>
       
     </div>
   </button>
@@ -103,11 +109,11 @@ const Service: React.FC = () => {
           <div className="hz-slide">
             <div className="hz-promo-card">
               <div className="promo-inner">
-                <div className="promo-tag">EXCLUSIVE_ACCESS</div>
+                <div className="promo-tag">EXCLUSIVE  ACCESS</div>
                 <h3>VISIT OUR <br /> SHOWROOM</h3>
                 <p>LIVE DIAGNOSTICS & 20% DISCOUNT ON ALL PREMIUM MODULES.</p>
-                <button className="promo-link" onClick={() => navigate('/showroom')}>
-                  GET_OFFER_CODE
+                <button className="promo-link" onClick={() => handleNavigate('/showroom')}>
+                  GET  OFFER  CODE
                 </button>
               </div>
             </div>

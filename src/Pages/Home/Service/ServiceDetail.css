@@ -1,109 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&display=swap');
+
+/* --- GLOBAL RESET --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none !important; /* Removes all underlines */
+}
+
+:root {
+  --red: #E31837;
+  --white: #ffffff;
+  --black: #0a0a0a;
+  --gray-light: #f8f8f8;
+  --gray-border: #eeeeee;
+  --font-smooth: 'Plus Jakarta Sans', sans-serif;
+}
+
 .sd-viewport {
-  background: #050505;
-  color: #fff;
+  background: var(--white);
+  color: var(--black);
   min-height: 100vh;
-  padding: 40px 6%;
+  padding: 60px 6%;
+  font-family: var(--font-smooth);
+  padding-top: 150px;
 }
 
 .sd-nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 60px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding-bottom: 20px;
+ 
+  border-bottom: 2px solid var(--gray-light);
+  
 }
 
 .sd-back {
-  font-family: 'Orbitron';
+  font-family: var(--font-smooth);
   color: var(--red);
-  text-decoration: none;
-  font-size: 0.7rem;
-  letter-spacing: 2px;
+  font-weight: 800;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  transition: 0.3s;
+}
+
+.sd-back:hover {
+  transform: translateX(-5px);
 }
 
 .sd-id {
-  font-family: 'Orbitron';
-  font-size: 0.6rem;
-  color: #444;
+  font-family: var(--font-smooth);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #ccc;
+  letter-spacing: 2px;
 }
 
 /* --- HERO SECTION --- */
 .sd-hero {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 60px;
+  gap: 80px;
   align-items: center;
 }
 
 .sd-title {
-  font-family: 'Orbitron';
-  font-size: clamp(3rem, 8vw, 6rem);
-  font-weight: 900;
-  line-height: 0.9;
-  margin-bottom: 30px;
-  text-transform: uppercase;
+  font-family: var(--font-smooth);
+  font-size: clamp(3rem, 8vw, 5.5rem);
+  font-weight: 800;
+  line-height: 0.85;
+  margin-bottom: 40px;
+  letter-spacing: -3px; /* Smooth tight tracking */
+  color: var(--black);
 }
 
 .sd-line {
-  width: 100px;
-  height: 4px;
+  width: 80px;
+  height: 6px;
   background: var(--red);
-  margin-bottom: 30px;
+  margin-bottom: 40px;
+  border-radius: 10px; /* Smooth ends */
 }
 
 .sd-lead {
-  font-size: 1.2rem;
-  color: #888;
-  line-height: 1.6;
+  font-size: 1.25rem;
+  color: #666;
+  line-height: 1.7;
   max-width: 500px;
+  font-weight: 500;
 }
 
 .sd-hero-img {
   width: 100%;
-  aspect-ratio: 16/9;
+  aspect-ratio: 16/10;
   object-fit: cover;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  filter: saturate(0.8);
+  border-radius: 40px; /* Smooth heavy radius */
+  box-shadow: 0 30px 60px rgba(0,0,0,0.06);
+  filter: saturate(1); /* Full color for white theme */
 }
 
 /* --- SPECS SECTION --- */
 .sd-specs {
-  margin-top: 100px;
+  margin-top: 150px;
   display: grid;
-  grid-template-columns: 350px 1fr;
+  grid-template-columns: 380px 1fr;
   gap: 100px;
 }
 
 .spec-card h5 {
-  font-family: 'Orbitron';
+  font-family: var(--font-smooth);
+  font-size: 0.8rem;
   color: var(--red);
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   letter-spacing: 3px;
+  font-weight: 800;
+  text-transform: uppercase;
 }
 
 .spec-card p {
-  color: #666;
-  font-size: 0.9rem;
-  line-height: 1.8;
+  color: #555;
+  font-size: 1.05rem;
+  line-height: 1.9;
+  font-weight: 500;
 }
 
 .spec-visual {
   position: relative;
-  height: 400px;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px dashed rgba(255, 255, 255, 0.1);
+  height: 450px;
+  background: var(--gray-light);
+  border: 1px solid var(--gray-border);
+  border-radius: 40px; /* Consistent smooth edge */
+  overflow: hidden;
 }
 
 .grid-overlay {
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(rgba(227, 24, 55, 0.1) 1px, transparent 1px);
-  background-size: 30px 30px;
+  background-image: radial-gradient(rgba(0, 0, 0, 0.04) 1.5px, transparent 1.5px);
+  background-size: 40px 40px;
 }
 
 /* Responsive */
 @media (max-width: 1024px) {
-  .sd-hero, .sd-specs { grid-template-columns: 1fr; }
-  .sd-hero-img { order: -1; }
+  .sd-hero, .sd-specs { grid-template-columns: 1fr; gap: 40px; }
+  .sd-hero-img { order: -1; border-radius: 30px; }
+  .sd-title { font-size: 2.8rem; }
+  .sd-specs { margin-top: 80px; }
 }

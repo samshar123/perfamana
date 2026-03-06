@@ -63,7 +63,7 @@ const EventDetail: React.FC = () => {
             </div>
             <div className="d-stat">
               <span className="d-label">TIMESTAMP</span>
-              <span className="d-value">{event.date} // {event.time}</span>
+              <span className="d-value">{event.date} | {event.time}</span>
             </div>
           </div>
         </div>
@@ -75,17 +75,17 @@ const EventDetail: React.FC = () => {
           </Link>
 
           <header className="dossier-header">
-            <span className="dossier-kicker">// OFFICIAL_LOG_ENTRY</span>
+            <span className="dossier-kicker">OFFICIAL  LOG  ENTRY</span>
             <h1 className="dossier-title">{event.title}</h1>
           </header>
 
           <section className="dossier-section">
-            <h4 className="section-label">EXECUTIVE_SUMMARY</h4>
+            <h4 className="section-label">EXECUTIVE  SUMMARY</h4>
             <p className="dossier-description">{event.description}</p>
           </section>
 
           <section className="dossier-section">
-            <h4 className="section-label">MISSION_GALLERY</h4>
+            <h4 className="section-label">MISSION  GALLERY</h4>
             <div className="dossier-gallery-grid">
               {event.gallery.map((img, i) => (
                 <motion.div 
@@ -102,11 +102,11 @@ const EventDetail: React.FC = () => {
           <footer className="dossier-footer">
             {event.isRegistrationOpen ? (
               <a href={event.registrationLink} className="dossier-action-btn active" target="_blank" rel="noreferrer">
-                INITIATE_REGISTRATION
+                INITIATE  REGISTRATION
               </a>
             ) : (
               <div className="dossier-action-btn disabled">
-                REGISTRATION_LOCKED
+                REGISTRATION  LOCKED
               </div>
             )}
           </footer>
