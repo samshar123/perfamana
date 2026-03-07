@@ -1,29 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { faqApi } from '../../../api';
+import type { FAQ } from '../../../api';
 import './FaqSection.css';
 
-interface FAQItem {
-  id: string;
-  q: string;
-  a: string;
-}
-
 const FaqSection: React.FC = () => {
-  const [faqs, setFaqs] = useState<FAQItem[]>([]);
+  const [faqs, setFaqs] = useState<FAQ[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [active, setActive] = useState<number>(0);
 
   useEffect(() => {
-    // Fetching from public/data/faq.json
-    fetch('../../src/data/faq.json')
-      .then((res) => {
-        if (!res.ok) throw new Error("Network response was not ok");
-        return res.json();
-      })
-      .then((data) => setFaqs(data))
-      .catch((err) => console.error("Error loading FAQs:", err));
-  }, []);
+    const loadFAQs = async () => {
+      try {
+        setLoading(true);
+        const data = await faqApi.getFAQs();
+        setFaqs(data);
+        setError(null);
+      } catch (err) {
+        setError('Failed to load FAQs');
+        console.error('Error loading FAQs:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  
+    loadFAQs();
+  }, []);
 
   return (
     <section className="kq-root">
@@ -42,7 +45,11 @@ const FaqSection: React.FC = () => {
         </div>
 
         <div className="kq-main-content">
-          {faqs.length > 0 ? (
+          {loading ? (
+            <p className="kq-loading">INITIALIZING  DATA  STREAM...</p>
+          ) : error ? (
+            <p className="kq-error">{error}</p>
+          ) : faqs.length > 0 ? (
             faqs.map((item, index) => (
               <div 
                 key={item.id} 
@@ -50,7 +57,7 @@ const FaqSection: React.FC = () => {
                 onMouseEnter={() => setActive(index)}
               >
                 <div className="kq-card-header">
-                  <span className="kq-index">{item.id}</span>
+                  <span className="kq-index">{item.id.toString().padStart(3, '0')}</span>
                   <h3 className="kq-question">{item.q}</h3>
                 </div>
 
@@ -70,7 +77,7 @@ const FaqSection: React.FC = () => {
               </div>
             ))
           ) : (
-            <p className="kq-loading">INITIALIZING  DATA  STREAM...</p>
+            <p className="kq-loading">NO  FAQ  DATA  AVAILABLE</p>
           )}
         </div>
       </div>

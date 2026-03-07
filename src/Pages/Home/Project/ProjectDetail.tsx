@@ -1,21 +1,47 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import projectData from '../../../../src/data/projects.json';
+import { projectsApi } from '../../../api';
+import type { Project } from '../../../api';
 import "./projectDetail.css"
 
 const ProjectDetail: React.FC = () => {
   // useParams grabs the ':id' from the URL (e.g., /projects/stealth-gtr)
   const { id } = useParams<{ id: string }>();
+  const [project, setProject] = useState<Project | null>(null);
+  const [loading, setLoading] = useState(true);
+  
+  // Fetch project details from API
+  useEffect(() => {
+    const fetchProject = async () => {
+      if (!id) return;
+      
+      try {
+        const data = await projectsApi.getProjectBySlug(id);
+        setProject(data);
+      } catch (error) {
+        console.error('Failed to fetch project details:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProject();
+  }, [id]);
   
   // Scroll to top when component mounts
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  
-  // Find the specific project in your JSON data
-  const project = projectData.projects.find(p => p.id === id);
 
-  // Error handling if the ID doesn't exist
+  // Error handling if the ID doesn't exist or loading
+  if (loading) {
+    return (
+      <div className="pd-viewport">
+        <div className="pd-loading">LOADING PROJECT DOSSIER...</div>
+      </div>
+    );
+  }
+
   if (!project) {
     return (
       <div className="pd-not-found">
@@ -43,14 +69,14 @@ const ProjectDetail: React.FC = () => {
         <div className="pd-side pre-build">
           <div className="pd-label">PRE  BUILD  STATE</div>
           <div className="pd-img-wrapper">
-             <img src={project.oldImage} alt="Original Vehicle Condition" />
+             <img src={project.oldImage || ''} alt="Original Vehicle Condition" />
           </div>
         </div>
         
         <div className="pd-side post-build">
           <div className="pd-label">POST  BUILD  STATE</div>
           <div className="pd-img-wrapper">
-             <img src={project.newImage} alt="Modified Performance Result" />
+             <img src={project.newImage || ''} alt="Modified Performance Result" />
           </div>
         </div>
       </section>
@@ -75,23 +101,25 @@ const ProjectDetail: React.FC = () => {
 </section>
 
       {/* TESTIMONIALS */}
-      <section className="pd-testimonial-section">
-        <div className="pd-test-card">
-          <div className="pd-stars">
-             {Array.from({ length: project.testimonial.stars }).map((_, i) => (
-               <span key={i}>★</span>
-             ))}
-          </div>
-          <p className="pd-quote">"{project.testimonial.content}"</p>
-          <div className="pd-client-profile">
-            <img src={project.testimonial.avatar} alt={project.testimonial.name} className="pd-avatar" />
-            <div className="pd-client-info">
-              <h4>{project.testimonial.name}</h4>
-              <span>{project.testimonial.designation}</span>
+      {project.testimonial && (
+        <section className="pd-testimonial-section">
+          <div className="pd-test-card">
+            <div className="pd-stars">
+               {Array.from({ length: project.testimonial.stars }).map((_, i) => (
+                 <span key={i}>★</span>
+               ))}
+            </div>
+            <p className="pd-quote">"{project.testimonial.content}"</p>
+            <div className="pd-client-profile">
+              <img src={project.testimonial.avatar} alt={project.testimonial.name} className="pd-avatar" />
+              <div className="pd-client-info">
+                <h4>{project.testimonial.name}</h4>
+                <span>{project.testimonial.designation}</span>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
     </div>
   );
 };

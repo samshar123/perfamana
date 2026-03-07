@@ -1,12 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import eventData from '../../../data/events.json';
+import { eventsApi } from '../../../api/events';
+import type { Event } from '../../../api/types';
 import './EventsSection.css';
 
 const EventSection: React.FC = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(0);
-  const featuredEvents = eventData.events.slice(0, 3);
+  const [events, setEvents] = useState<Event[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  // Fetch events from API
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const data = await eventsApi.getEvents();
+        setEvents(data);
+      } catch (error) {
+        console.error('Failed to fetch events:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchEvents();
+  }, []);
+
+  const featuredEvents = events.slice(0, 3);
+
+  if (loading) {
+    return <div className="loading">Loading events...</div>;
+  }
 
   return (
     <section className="prism-root" id="events">
@@ -22,9 +46,9 @@ const EventSection: React.FC = () => {
       </div>
 
       <div className="prism-flex-container">
-        {featuredEvents.map((event, index) => (
+        {featuredEvents.map((event: Event, index: number) => (
           <motion.div
-            key={event.id}
+            key={event.slug}
             className={`prism-shard ${hoveredIndex === index ? 'is-expanded' : ''}`}
             onMouseEnter={() => setHoveredIndex(index)}
             initial={false}
@@ -34,7 +58,7 @@ const EventSection: React.FC = () => {
             {/* GRAYSCALE TO COLOR TRANSITION */}
             <div className="prism-bg-wrap">
               <motion.img
-                src={event.heroImage}
+                src={event.heroImage || ''}
                 alt={event.title}
                 animate={{
                   scale: hoveredIndex === index ? 1 : 1.15,
@@ -65,7 +89,7 @@ const EventSection: React.FC = () => {
                       {/* <p className="prism-desc">
                         A bespoke performance showcase focusing on precision engineering and elite calibration at {event.location}.
                       </p> */}
-                      <Link to={`/events/${event.id}`} className="prism-btn">
+                      <Link to={`/events/${event.slug}`} className="prism-btn">
                         EXPLORE  STORY
                       </Link>
                     </motion.div>

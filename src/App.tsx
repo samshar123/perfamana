@@ -9,6 +9,7 @@ import EventDetail from './Pages/Home/EventSection/EventDetail';
 import Navbar from './Components/Navbar/navbar';
 import AllEvents from "./Pages/Events/Allevents"
 import Footer from './Components/Footer/footer';
+import DebugFAQ from './debug-faq';
 
 function App() {
   const location = useLocation();
@@ -32,6 +33,7 @@ function App() {
         <Route path="/events/:id" element={<EventDetail />} />
         <Route path="/offers" element={<OffersPage />} />
         <Route path="/allevents" element={<AllEvents />} />
+        <Route path="/debug" element={<DebugFAQ />} />
 
       </Routes>
       <Footer></Footer>

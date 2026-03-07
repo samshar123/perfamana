@@ -1,29 +1,39 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { whyusApi } from '../../../api';
+import type { WhyUsFeature } from '../../../api';
 import './whyUs.css';
 
-const features = [
-  {
-    id: '01',
-    title: '5 YEARS OF  w',
-    desc: 'Engineering calibrated to aerospace tolerances. We eliminate mechanical variance through laser-synchronized diagnostics.',
-    image: '/Images/img1.JPG'
-  },
-  {
-    id: '02',
-    title: 'TOP CLASS PRODUCTS',
-    desc: 'Bespoke performance mapping and component fabrication tailored specifically to your vehicle’s mechanical DNA.',
-    image: '/Images/About/abt1.jpg'
-  },
-  {
-    id: '03',
-    title: 'SAFE & LEGAL DEALINGS',
-    desc: 'Empirical results only. Every modification is backed by comprehensive dyno-logs and thermal stress reports.',
-    image: '/Images/Events/event1.jpg'
-  }
-];
-
 const WhyUs: React.FC = () => {
+  const [features, setFeatures] = useState<WhyUsFeature[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  // Fetch Why Us features from API
+  useEffect(() => {
+    const fetchFeatures = async () => {
+      try {
+        const data = await whyusApi.getWhyUsFeatures();
+        setFeatures(data);
+      } catch (error) {
+        console.error('Failed to fetch Why Us features:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchFeatures();
+  }, []);
+
+  if (loading) {
+    return (
+      <section id='why-us' className="mono-root">
+        <div className="mono-container">
+          <div className="mono-loading">LOADING FEATURES...</div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section id='why-us' className="mono-root">
       <div className="mono-container">
@@ -47,7 +57,7 @@ const WhyUs: React.FC = () => {
               {/* CREATIVE IMAGE CONTAINER */}
               <div className="mono-visual-wrap">
                 <div className="mono-img-mask">
-                  <img src={feature.image} alt={feature.title} />
+                  <img src={feature.image || ''} alt={feature.title} />
                 </div>
                 {/* DECORATIVE SHAPE BEHIND IMAGE */}
                 <div className="mono-shape-deco"></div>
@@ -60,8 +70,8 @@ const WhyUs: React.FC = () => {
                   <div className="mono-line"></div>
                 </div>
                 <h3 className="mono-step-title">{feature.title}</h3>
-                <p className="mono-step-desc">{feature.desc}</p>
-                <div className="mono-status-badge">PROTOCOL  ACTIVE</div>
+                <p className="mono-step-desc">{feature.description}</p>
+                {/* <div className="mono-status-badge">PROTOCOL  ACTIVE</div> */}
               </div>
             </motion.div>
           ))}

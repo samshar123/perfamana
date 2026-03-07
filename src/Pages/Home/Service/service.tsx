@@ -1,12 +1,31 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import serviceData from '../../../data/services.json';
+import { servicesApi } from '../../../api/services';
+import type { Service } from '../../../api/types';
 import './service.css';
 
 const Service: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
+  const [services, setServices] = useState<Service[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  // Fetch services from API
+  useEffect(() => {
+    const fetchServices = async () => {
+      try {
+        const data = await servicesApi.getServices();
+        setServices(data);
+      } catch (error) {
+        console.error('Failed to fetch services:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchServices();
+  }, []);
 
   // Scroll to top and navigate
   const handleNavigate = (path: string) => {
@@ -21,6 +40,19 @@ const Service: React.FC = () => {
   // Moves the track horizontally
   const x = useTransform(scrollYProgress, [0, 1], ["0%", "-75%"]);
 
+  if (loading) {
+    return (
+      <div id='services' ref={containerRef} className="hz-container">
+        <div className="hz-sticky">
+          <div className="hz-scanlines"></div>
+          <div style={{ padding: '50px', textAlign: 'center', color: '#fff' }}>
+            Loading services...
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div id='services' ref={containerRef} className="hz-container">
       <div className="hz-sticky">
@@ -28,7 +60,7 @@ const Service: React.FC = () => {
         <div className="hz-scanlines"></div>
         
         <motion.div style={{ x }} className="hz-track">
-          {serviceData.services.map((service, i) => (
+          {services.map((service, i) => (
             <div key={service.id} className="hz-slide">
               <div className="hz-modern-card">
                 
@@ -45,7 +77,7 @@ const Service: React.FC = () => {
                   <div className="hz-corner tr"></div>
                   <div className="hz-corner bl"></div>
                   <div className="hz-corner br"></div>
-                  <img src={service.thumbnail} alt={service.title} />
+                  <img src={service.thumbnail || ''} alt={service.title} />
                   <div className="hz-img-overlay"></div>
                 </div>
 

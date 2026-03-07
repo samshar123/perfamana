@@ -1,18 +1,42 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import serviceData from '../../../../src/data/services.json'
+import { servicesApi } from '../../../api/services';
+import type { Service } from '../../../api/types';
 import './ServiceDetail.css';
 
 const ServiceDetail: React.FC = () => {
   const { id } = useParams();
-  const data = serviceData.services.find(s => s.id === id);
+  const [service, setService] = useState<Service | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  // Fetch service details from API
+  useEffect(() => {
+    const fetchService = async () => {
+      if (!id) return;
+      
+      try {
+        const data = await servicesApi.getServiceBySlug(id);
+        setService(data);
+      } catch (error) {
+        console.error('Failed to fetch service details:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchService();
+  }, [id]);
 
   // Scroll to top when component mounts
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  if (!data) return <div className="not-found">MODULE  NOT  FOUND</div>;
+  if (loading) {
+    return <div className="loading">Loading service details...</div>;
+  }
+
+  if (!service) return <div className="not-found">MODULE  NOT  FOUND</div>;
 
   return (
     <div className="sd-viewport">
@@ -23,21 +47,24 @@ const ServiceDetail: React.FC = () => {
 
       <div className="sd-hero">
         <div className="sd-hero-content">
-          <h1 className="sd-title">{data.title}</h1>
+          <h1 className="sd-title">{service.title}</h1>
           <div className="sd-line"></div>
-          <p className="sd-lead">{data.shortDesc}</p>
+          <p className="sd-lead">{service.shortDesc}</p>
         </div>
-        <img src={data.thumbnail} alt="Hero" className="sd-hero-img" />
+        <img src={service.thumbnail || ''} alt="Hero" className="sd-hero-img" />
       </div>
 
       <section className="sd-specs">
         <div className="spec-card">
           <h5>PROCESS  ENGINEERING</h5>
-          <p>Every phase is measured against factory tolerances and performance benchmarks. Our {data.title} module ensures zero-compromise results.</p>
+          <p>Every phase is measured against factory tolerances and performance benchmarks. Our {service.title} module ensures zero-compromise results.</p>
         </div>
         <div className="spec-visual">
             <div className="grid-overlay"></div>
-            {/* Map more images here from your JSON */}
+            {/* Map more images here from service.detailedImages */}
+            {service.detailedImages?.map((image, index) => (
+              <img key={index} src={image} alt={`Detail ${index + 1}`} className="detail-image" />
+            ))}
         </div>
       </section>
     </div>

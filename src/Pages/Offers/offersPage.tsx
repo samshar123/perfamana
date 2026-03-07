@@ -1,25 +1,82 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import offerData from '../../data/offers.json';
+import { offersApi } from '../../api';
+import type { Brand, Inquiry } from '../../api';
 import './offersPage.css';
 
 const OffersPage: React.FC = () => {
   const [step, setStep] = useState(1);
-  const [searchQuery, setSearchQuery] = useState(''); // New State for Search
+  const [searchQuery, setSearchQuery] = useState('');
+  const [brands, setBrands] = useState<Brand[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     brand: '', model: '', name: '', phone: '', email: '', location: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+
+  // Load brands data from API
+  useEffect(() => {
+    const loadBrands = async () => {
+      try {
+        setLoading(true);
+        const data = await offersApi.getOffersData();
+        setBrands(data.brands);
+        setError(null);
+      } catch (err) {
+        setError('Failed to load brands data');
+        console.error('Error loading brands:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadBrands();
+  }, []);
 
   // Filter Logic
-  const filteredBrands = offerData.brands.filter(brand =>
+  const filteredBrands = brands.filter(brand =>
     brand.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  const selectedBrandData = offerData.brands.find(b => b.name === formData.brand);
+  const selectedBrandData = brands.find(b => b.name === formData.brand);
   const selectedModelData = selectedBrandData?.models.find(m => m.name === formData.model);
 
   const updateField = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
+  };
+
+  const submitInquiry = async () => {
+    if (!formData.name || !formData.email || !formData.phone || !formData.location) {
+      alert('Please fill all required fields');
+      return;
+    }
+
+    try {
+      setIsSubmitting(true);
+      await offersApi.submitInquiry({
+        brand: formData.brand,
+        model: formData.model,
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        location: formData.location,
+      });
+      setSubmitSuccess(true);
+      setTimeout(() => {
+        setSubmitSuccess(false);
+        setStep(1);
+        setFormData({
+          brand: '', model: '', name: '', phone: '', email: '', location: ''
+        });
+      }, 3000);
+    } catch (err) {
+      console.error('Error submitting inquiry:', err);
+      alert('Failed to submit inquiry. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const goBack = () => {
@@ -58,31 +115,39 @@ const OffersPage: React.FC = () => {
                 />
               </div>
 
-              <motion.div layout className="p-grid-wall">
-                <AnimatePresence>
-                  {filteredBrands.map(brand => (
-                    <motion.button 
-                      layout
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.9 }}
-                      key={brand.id} 
-                      className="p-vault-card brand-visual" 
-                      onClick={() => { updateField('brand', brand.name); setStep(2); }}
-                    >
-                      <div className="p-card-logo-overlay">
-                        <img src={brand.logo} alt="" />
-                      </div>
-                      <div className="p-card-content">
-                        <span className="p-card-name">{brand.name}</span>
-                      </div>
-                    </motion.button>
-                  ))}
-                </AnimatePresence>
-              </motion.div>
+              {loading ? (
+                <div className="p-loading">LOADING BRAND DATA...</div>
+              ) : error ? (
+                <div className="p-error">{error}</div>
+              ) : (
+                <>
+                  <motion.div layout className="p-grid-wall">
+                    <AnimatePresence>
+                      {filteredBrands.map(brand => (
+                        <motion.button 
+                          layout
+                          initial={{ opacity: 0, scale: 0.9 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          exit={{ opacity: 0, scale: 0.9 }}
+                          key={brand.id} 
+                          className="p-vault-card brand-visual" 
+                          onClick={() => { updateField('brand', brand.name); setStep(2); }}
+                        >
+                          <div className="p-card-logo-overlay">
+                            {brand.logo && <img src={brand.logo} alt={brand.name} />}
+                          </div>
+                          <div className="p-card-content">
+                            <span className="p-card-name">{brand.name}</span>
+                          </div>
+                        </motion.button>
+                      ))}
+                    </AnimatePresence>
+                  </motion.div>
 
-              {filteredBrands.length === 0 && (
-                <div className="p-no-results">No Match Found..</div>
+                  {filteredBrands.length === 0 && (
+                    <div className="p-no-results">No Match Found..</div>
+                  )}
+                </>
               )}
             </motion.div>
           )}
@@ -137,28 +202,50 @@ const OffersPage: React.FC = () => {
           {step === 4 && (
             <motion.div key="s4" className="p-layout" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
               <h1 className="p-hero-title">ACTIVE <span className="silver">OFFERS</span></h1>
-              <div className="p-result-grid">
-                {selectedModelData && selectedModelData.offers.length > 0 ? (
-                  selectedModelData.offers.map((offer, i) => (
-                    <div key={i} className="p-offer-box">
-                      <div className="p-offer-info">
-                        <span className="p-offer-id">PRFA  UNIT  {i+1}</span>
-                        <p className="p-offer-txt">{offer}</p>
+              
+              {submitSuccess ? (
+                <div className="p-success-message">
+                  <p>INQUIRY SUBMITTED SUCCESSFULLY</p>
+                  <span>Our team will contact you soon with available offers.</span>
+                </div>
+              ) : (
+                <>
+                  <div className="p-result-grid">
+                    {selectedModelData && selectedModelData.offers.length > 0 ? (
+                      selectedModelData.offers.map((offer, i) => (
+                        <div key={i} className="p-offer-box">
+                          <div className="p-offer-info">
+                            <span className="p-offer-id">PRFA  UNIT  {i+1}</span>
+                            <p className="p-offer-txt">{offer}</p>
+                          </div>
+                          <a  href="https://wa.me/917306096088" 
+                  target="_blank" 
+                  rel="noreferrer" >
+                            <button className="p-btn-ignite mini">CONNECT TEAM</button>
+                          </a>
+                        </div>
+                      ))
+                    ) : (
+                      <div className="p-empty-box">
+                        <p>ARCHIVE EMPTY: NO ACTIVE OFFERS FOR {formData.model.toUpperCase()}</p>
+                        <span>Submit your inquiry below to be notified when offers become available.</span>
                       </div>
-                      <a  href="https://wa.me/917306096088" 
-              target="_blank" 
-              rel="noreferrer" >
-                      <button className="p-btn-ignite mini">CONNECT TEAM</button>
-                      </a>
-                    </div>
-                  ))
-                ) : (
-                  <div className="p-empty-box">
-                    <p>ARCHIVE EMPTY: NO ACTIVE OFFERS FOR {formData.model.toUpperCase()}</p>
-                    <span>Request logged. We will notify you at {formData.email} once tuning data arrives.</span>
+                    )}
                   </div>
-                )}
-              </div>
+                  
+                  <div className="p-inquiry-section">
+                    <h3>SUBMIT INQUIRY FOR {formData.brand.toUpperCase()} {formData.model.toUpperCase()}</h3>
+                    <button 
+                      className="p-btn-ignite" 
+                      onClick={submitInquiry}
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? 'SUBMITTING...' : 'SUBMIT INQUIRY'}
+                    </button>
+                  </div>
+                </>
+              )}
+              
               <button className="p-btn-back" onClick={() => setStep(1)}>← START NEW SEARCH</button>
             </motion.div>
           )}

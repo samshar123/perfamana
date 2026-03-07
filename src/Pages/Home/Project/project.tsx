@@ -1,10 +1,40 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import projectData from '../../../data/projects.json';
+import { projectsApi } from '../../../api';
+import type { Project } from '../../../api';
 import './project.css';
 
 const Project: React.FC = () => {
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  // Fetch projects from API
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const data = await projectsApi.getProjects();
+        setProjects(data);
+      } catch (error) {
+        console.error('Failed to fetch projects:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProjects();
+  }, []);
+
+  if (loading) {
+    return (
+      <section id='projects' className="pj-grid-viewport">
+        <div className="pj-container">
+          <div className="pj-loading">LOADING PROJECT DATABASE...</div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section id='projects' className="pj-grid-viewport">
       {/* BACKGROUND DECOR */}
@@ -21,7 +51,7 @@ const Project: React.FC = () => {
         </header>
 
         <div className="pj-bento-grid">
-          {projectData.projects.map((project, index) => (
+          {projects.map((project, index) => (
             <motion.div 
               key={project.id}
               className={`pj-bento-item item-${index + 1}`}
@@ -32,7 +62,7 @@ const Project: React.FC = () => {
             >
               <Link to={`/projects/${project.id}`} className="pj-card-link">
                 <div className="pj-image-container">
-                  <img src={project.newImage} alt={project.title} className="pj-main-img" />
+                  <img src={project.newImage || ''} alt={project.title} className="pj-main-img" />
                   
                   {/* HUD OVERLAY ELEMENTS */}
                   <div className="pj-hud">

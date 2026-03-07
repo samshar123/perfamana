@@ -1,23 +1,46 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './brands.css';
-import logo1 from '../../../../public/Images/Brands/BMW.svg';
-import logo2 from '../../../../public/Images/Brands/Ferrari-Logo.png';
-import logo3 from '../../../../public/Images/Brands/Mercedes.png';
-import logo4 from '../../../../public/Images/Brands/lamborghini.svg';
-import logo5 from '../../../../public/Images/Brands/mistibushi.png';
-import logo6 from '../../../../public/Images/Brands/volvo.svg';
-import logo7 from '../../../../public/Images/Brands/porche.svg'; 
+import { homepageApi } from '../../../api';
+import type { PartnerBrand } from '../../../api';
 
 const Brands: React.FC = () => {
-  const brands = [
-    { name: 'Brembo', img: logo1 },
-    { name: 'Akrapovic', img: logo2},
-    { name: 'Ohlins', img: logo3},
-    { name: 'Michelin', img: logo4 },
-    { name: 'Motul', img: logo5 },
-    { name: 'HKS', img: logo6 },
-    { name: 'Porsche', img: logo7 },
+  const [partnerBrands, setPartnerBrands] = useState<PartnerBrand[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  // Fallback brands for display if API fails
+  const fallbackBrands = [
+    { name: 'Brembo', img: '/Images/Brands/BMW.svg' },
+    { name: 'Akrapovic', img: '/Images/Brands/Ferrari-Logo.png'},
+    { name: 'Ohlins', img: '/Images/Brands/Mercedes.png'},
+    { name: 'Michelin', img: '/Images/Brands/lamborghini.svg' },
+    { name: 'Motul', img: '/Images/Brands/mistibushi.png' },
+    { name: 'HKS', img: '/Images/Brands/volvo.svg' },
+    { name: 'Porsche', img: '/Images/Brands/porche.svg' },
   ];
+
+  useEffect(() => {
+    const loadPartnerBrands = async () => {
+      try {
+        const data = await homepageApi.getPartnerBrands();
+        // Backend already filters for active brands, so no need to filter here
+        setPartnerBrands(data);
+        setError(null);
+      } catch (err) {
+        setError('Failed to load partner brands');
+        console.error('Error loading partner brands:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadPartnerBrands();
+  }, []);
+
+  // Use API data if available, otherwise fallback
+  const displayBrands = partnerBrands.length > 0 
+    ? partnerBrands.map(brand => ({ name: brand.name, img: brand.logo }))
+    : fallbackBrands;
 
   return (
     <section className="fs-section">
@@ -34,7 +57,7 @@ const Brands: React.FC = () => {
         <div className="fs-filmstrip-wrap">
           <div className="fs-filmstrip-track">
             {/* Map twice for infinite loop effect */}
-            {[...brands, ...brands].map((brand, i) => (
+            {[...displayBrands, ...displayBrands].map((brand, i) => (
               <div key={i} className="fs-item">
                 <div className="fs-hex-bracket"></div>
                 <img src={brand.img} alt={brand.name} className="fs-logo" />
