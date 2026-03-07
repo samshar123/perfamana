@@ -12,9 +12,9 @@ import FinalCTA from "./FinalCTA/finalcta"
 import FaqSection from "./FaqSection/FaqSection"
 
 
-const home = () => {
+const Home = () => {
   return (
-    <div>
+    <div id="top">
         <Landing></Landing>
       <About></About>
       <Service></Service>
@@ -30,4 +30,4 @@ const home = () => {
   )
 }
 
-export default home
+export default Home

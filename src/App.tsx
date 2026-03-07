@@ -1,4 +1,5 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 import './App.css';
 import Home from './Pages/Home/home';
 // Import your new Service Detail component
@@ -13,6 +14,19 @@ import DebugFAQ from './debug-faq';
 
 function App() {
   const location = useLocation();
+
+  // Handle hash scrolling
+  useEffect(() => {
+    if (location.hash) {
+      const element = document.getElementById(location.hash.replace('#', ''));
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else if (location.pathname === '/') {
+      // If no hash and on home page, scroll to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [location]);
 
   return (
     <div className="app-container">

@@ -153,7 +153,7 @@
 /* --- LEVEL 3: NAV MATRIX --- */
 .gt-nav-matrix {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 40px;
   padding: 100px 0;
   border-top: 1px solid var(--gt-border);

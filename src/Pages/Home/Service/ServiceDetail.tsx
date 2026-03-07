@@ -61,10 +61,22 @@ const ServiceDetail: React.FC = () => {
         </div>
         <div className="spec-visual">
             <div className="grid-overlay"></div>
-            {/* Map more images here from service.detailedImages */}
-            {service.detailedImages?.map((image, index) => (
-              <img key={index} src={image} alt={`Detail ${index + 1}`} className="detail-image" />
-            ))}
+            {service.detailedImages && service.detailedImages.length > 0 ? (
+              <div className="image-gallery">
+                {service.detailedImages.map((image, index) => (
+                  <img 
+                    key={index} 
+                    src={image} 
+                    alt={`Detail ${index + 1}`} 
+                    className="detail-image" 
+                  />
+                ))}
+              </div>
+            ) : (
+              <div className="no-images">
+                <p>No detailed images available</p>
+              </div>
+            )}
         </div>
       </section>
     </div>

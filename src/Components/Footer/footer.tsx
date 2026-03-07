@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../../public/Images/logo1.jpg';
+import { servicesApi } from '../../api/services';
+import type { Service } from '../../api/types';
 import './footer.css';
 
 const Footer: React.FC = () => {
+  const [services, setServices] = useState<Service[]>([]);
+
+  useEffect(() => {
+    servicesApi.getServices().then((data) => setServices(data));
+  }, []);
+
   return (
     <footer className="gt-footer">
       <div className="gt-container">
@@ -56,33 +64,34 @@ const Footer: React.FC = () => {
         <div className="gt-nav-matrix">
           <div className="gt-nav-col">
             <h4 className="gt-nav-title">SITEMAP</h4>
-            <Link to="/">HOME</Link>
-            <Link to="/about">ABOUT US</Link>
-            <Link to="/process">PROCESS</Link>
-            <Link to="/gallery">GALLERY</Link>
+            <Link to="/#top">HOME</Link>
+            <Link to="/#about">ABOUT US</Link>
+            <Link to="/#cta">CONTACT US</Link>
+            {/* <Link to="/gallery">GALLERY</Link> */}
           </div>
           <div className="gt-nav-col">
             <h4 className="gt-nav-title">SERVICES</h4>
-            <Link to="/service/tuning">PERFORMANCE TUNING</Link>
-            <Link to="/service/body">BODY MODIFICATION</Link>
-            <Link to="/service/detailing">PREMIUM DETAILING</Link>
+            {services.map((service) => (
+              <Link key={service.id} to={service.path}>
+                {service.title}
+              </Link>
+            ))}
           </div>
-          <div className="gt-nav-col">
+          {/* <div className="gt-nav-col">
             <h4 className="gt-nav-title">OFFERS</h4>
             <Link to="/offers/seasonal">SEASONAL PACKS</Link>
             <Link to="/offers/loyalty">LOYALTY PROGRAM</Link>
-          </div>
+          </div> */}
           <div className="gt-nav-col">
             <h4 className="gt-nav-title">SUPPORT</h4>
-            <Link to="/faq">TECHNICAL FAQ</Link>
-            <Link to="/terms">WARRANTY TERMS</Link>
-            <Link to="/privacy">PRIVACY PROTOCOL</Link>
+            <a href="mailto:info@perfamana.com" className="support-link">EMAIL</a>
+            <a href="https://wa.me/917306096088" target="_blank" className="support-link">PHONE</a>
           </div>
         </div>
 
         {/* LEVEL 4: BOTTOM BAR & GHOST LOGO */}
         <div className="gt-bottom-bar">
-          <p className="gt-copyright">© 2026 PERFAMANA. DEVELOPED BY TEAM DOTCO. ALL RIGHTS RESERVED.</p>
+          <p className="gt-copyright"> 2026 PERFAMANA. DEVELOPED BY TEAM DOTCO. ALL RIGHTS RESERVED.</p>
           <div className="gt-ghost-logo">PERFAMANA</div>
         </div>
 
