@@ -24,14 +24,11 @@ const About: React.FC = () => {
             </div>
 
             <h2 className="bp-main-title">
-              THE <br /> <span>ARCHITECTS</span> <br /> OF SPEED
+              WHERE <br /> <span>PERFORMANCE MEETS</span> <br /> PERFECTION
             </h2>
 
             <p className="bp-text">
-              Since 2017, Perfamana Labs has operated at the intersection of 
-              art and physics. We don't just tune engines; we re-engineer the 
-              soul of the machine. Every curve, every bolt, and every horse-power 
-              is accounted for in our Calicut laboratory.
+              Founded in 2016, Perfamana was built on two simple beliefs, performance and trust. We saw a market full of inconsistent quality and chose to do things differently. From premium leather interiors to track-ready performance upgrades, every service we offer is backed by OEM-grade craftsmanship and genuine materials. At Perfamana, your car isn't just a vehicle, it's a reflection of who you are, and we treat it that way.
             </p>
 
             <div className="bp-features">
@@ -61,7 +58,7 @@ const About: React.FC = () => {
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
           >
             <img 
-              src="../../../../public/Images/about/IMG_2751.jpg" 
+              src="../../../../public/Images/about/about1.jpeg" 
               alt="Engineering" 
               className="bp-main-img"
             />
@@ -78,7 +75,7 @@ const About: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.5 }}
           >
             <img 
-              src="../../../../public/Images/about/abt1.jpg" 
+              src="../../../../public/Images/about/about2.jpeg" 
               alt="Engine" 
             />
             <div className="bp-tag-label">MOD  V8  SPEC</div>

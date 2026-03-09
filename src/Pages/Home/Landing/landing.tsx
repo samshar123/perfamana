@@ -4,6 +4,8 @@ import img1 from "../../../../public/Images/Home/ford1-Photoroom.png";
 import img2 from "../../../../public/Images/Home/ford2.png";
 import img3 from "../../../../public/Images/Home/polo2.png";
 import img4 from "../../../../public/Images/Home/polo1.png";
+import img5 from "../../../../public/Images/Home/car1.png";
+import img6 from "../../../../public/Images/Home/car2.png";
 import "./landing.css";
 
 const carData = [
@@ -25,8 +27,8 @@ const carData = [
     id: "03",
     title: "AESTHETICS",
     desc: "SATIN STEALTH FINISH LABS",
-    baseImg: img1,
-    darkImg: img2,
+    baseImg: img5,
+    darkImg: img6,
   },
 ];
 
@@ -54,6 +56,10 @@ const Landing: React.FC = () => {
     const val = e.target.value;
     viewportRef.current?.style.setProperty("--split", `${val}%`);
   };
+
+  // Apply large image class only for AESTHETICS slide (index 2)
+  const imgBoxClass =
+    index === 2 ? "pf-img-box pf-img-box--large" : "pf-img-box";
 
   return (
     <section ref={viewportRef} className="pf-viewport">
@@ -91,7 +97,7 @@ const Landing: React.FC = () => {
             <div className="pf-container">
               <h1 className="pf-title">{carData[index].title}</h1>
               <p className="pf-desc">{carData[index].desc}</p>
-              <div className="pf-img-box">
+              <div className={imgBoxClass}>
                 <img src={carData[index].baseImg} alt="Base" />
               </div>
             </div>
@@ -102,7 +108,7 @@ const Landing: React.FC = () => {
             <div className="pf-container">
               <h1 className="pf-title stroke-red">{carData[index].title}</h1>
               <p className="pf-desc red-text">{carData[index].desc}</p>
-              <div className="pf-img-box">
+              <div className={imgBoxClass}>
                 <img
                   src={carData[index].darkImg}
                   className="neon-saturate"
@@ -136,7 +142,9 @@ const Landing: React.FC = () => {
             <div key={i} className={`dot ${index === i ? "active" : ""}`} />
           ))}
         </div>
-        <div className="pf-loc"><h3 style={{fontFamily:"var(--font-smooth)"}}>CALICUT KERALA</h3> </div>
+        <div className="pf-loc">
+          <h3 style={{ fontFamily: "var(--font-smooth)" }}>CALICUT KERALA</h3>
+        </div>
       </footer>
     </section>
   );
