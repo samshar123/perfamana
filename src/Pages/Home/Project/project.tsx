@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import { projectsApi } from '../../../api';
-import type { Project } from '../../../api';
-import './project.css';
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { projectsApi } from "../../../api";
+import type { Project } from "../../../api";
+import "./project.css";
 
-const Project: React.FC = () => {
+const ProjectSection: React.FC = () => {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -16,7 +16,7 @@ const Project: React.FC = () => {
         const data = await projectsApi.getProjects();
         setProjects(data);
       } catch (error) {
-        console.error('Failed to fetch projects:', error);
+        console.error("Failed to fetch projects:", error);
       } finally {
         setLoading(false);
       }
@@ -27,7 +27,7 @@ const Project: React.FC = () => {
 
   if (loading) {
     return (
-      <section id='projects' className="pj-grid-viewport">
+      <section id="projects" className="pj-grid-viewport">
         <div className="pj-container">
           <div className="pj-loading">LOADING PROJECT DATABASE...</div>
         </div>
@@ -36,7 +36,7 @@ const Project: React.FC = () => {
   }
 
   return (
-    <section id='projects' className="pj-grid-viewport">
+    <section id="projects" className="pj-grid-viewport">
       {/* BACKGROUND DECOR */}
       <div className="pj-bg-overlay">
         <div className="pj-line-h"></div>
@@ -45,14 +45,16 @@ const Project: React.FC = () => {
 
       <div className="pj-container">
         <header className="pj-header">
-          <div className="pj-meta">ARCHIVE  LOG  2026</div>
-          <h2 className="pj-main-title">PROJECT  DATABASE</h2>
-          <p className="pj-subtitle">Detailed dossiers of our most aggressive transformations.</p>
+          <div className="pj-meta">ARCHIVE LOG 2026</div>
+          <h2 className="pj-main-title">PROJECT DATABASE</h2>
+          <p className="pj-subtitle">
+            Detailed dossiers of our most aggressive transformations.
+          </p>
         </header>
 
         <div className="pj-bento-grid">
           {projects.map((project, index) => (
-            <motion.div 
+            <motion.div
               key={project.id}
               className={`pj-bento-item item-${index + 1}`}
               initial={{ opacity: 0, y: 30 }}
@@ -62,8 +64,12 @@ const Project: React.FC = () => {
             >
               <Link to={`/projects/${project.id}`} className="pj-card-link">
                 <div className="pj-image-container">
-                  <img src={project.newImage || ''} alt={project.title} className="pj-main-img" />
-                  
+                  <img
+                    src={project.newImage || undefined}
+                    alt={project.title}
+                    className="pj-main-img"
+                  />
+
                   {/* HUD OVERLAY ELEMENTS */}
                   <div className="pj-hud">
                     <div className="hud-corner tl"></div>
@@ -79,9 +85,9 @@ const Project: React.FC = () => {
                     <h3 className="pj-card-title">{project.title}</h3>
                   </div>
                   <p className="pj-card-desc">{project.description}</p>
-                  
+
                   <div className="pj-card-footer">
-                    <span className="pj-view-link">OPEN  DOSSIER</span>
+                    <span className="pj-view-link">OPEN DOSSIER</span>
                     <div className="pj-arrow">→</div>
                   </div>
                 </div>
@@ -94,4 +100,4 @@ const Project: React.FC = () => {
   );
 };
 
-export default Project;
+export default ProjectSection;
