@@ -37,8 +37,13 @@ const ServiceSection: React.FC = () => {
     target: containerRef,
   });
 
-  // Moves the track horizontally
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-75%"]);
+  // Calculate scroll distance dynamically based on number of services
+  // Total slides = services + 1 (promo slide)
+  const totalSlides = services.length + 1;
+  // Calculate how much we need to scroll to show all slides
+  // If we have 1 visible slide at a time, we need to scroll: (totalSlides - 1) * 100%
+  const scrollDistance = `-${(totalSlides - 1) * 100}%`;
+  const x = useTransform(scrollYProgress, [0, 1], ["0%", scrollDistance]);
 
   if (loading) {
     return (
@@ -62,7 +67,7 @@ const ServiceSection: React.FC = () => {
         <motion.div style={{ x }} className="hz-track">
           {services.map((service, i) => (
             <div key={service.id} className="hz-slide">
-              <div className="hz-modern-card">
+              <div className="hz-modern-card" onClick={() => handleNavigate(service.path)}>
                 {/* 1. TOP UI BAR */}
                 <div className="hz-card-ui-top">
                   <span className="hz-serial">REF {i + 1}</span>
@@ -92,7 +97,10 @@ const ServiceSection: React.FC = () => {
                   <div className="gear-btn-wrapper">
                     <button
                       className="gear-gate-btn"
-                      onClick={() => handleNavigate(service.path)}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleNavigate(service.path);
+                      }}
                     >
                       {/* NEW: CONTINUOUS BORDER TRACE */}
                       <svg className="btn-trace-svg">

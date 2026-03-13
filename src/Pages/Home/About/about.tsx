@@ -58,7 +58,7 @@ const About: React.FC = () => {
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
           >
             <img 
-              src="../../../../public/Images/about/about1.jpeg" 
+              src="/Images/About/about1.jpeg" 
               alt="Engineering" 
               className="bp-main-img"
             />
@@ -75,7 +75,7 @@ const About: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.5 }}
           >
             <img 
-              src="../../../../public/Images/about/about2.jpeg" 
+              src="/Images/About/about2.jpeg" 
               alt="Engine" 
             />
             <div className="bp-tag-label">MOD  V8  SPEC</div>
