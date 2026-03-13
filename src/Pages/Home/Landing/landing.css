@@ -327,7 +327,7 @@
 
   .pf-img-box img {
     height: 100%;
-    width: auto;
+    width: 403px;
   }
 
   .pf-img-box--large {
@@ -338,6 +338,10 @@
     max-width: 95%;
     height: 100%;
   }
+  
+.pf-viewport{
+  margin-top: 70px;
+}
 
   .slider-control-wrapper { width: 80%; }
 }

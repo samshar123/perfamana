@@ -183,3 +183,84 @@
 }
 
 /* --- RESPONSIVE remains same, background color already handled --- */
+
+
+@media (max-width: 768px) {
+  .about-blueprint {
+    padding: 80px 4% 40px;
+    min-height: auto;
+    align-items: flex-start;
+  }
+
+  .bp-container {
+    grid-template-columns: 1fr;
+    gap: 60px;
+    max-width: 100%;
+  }
+
+  .bp-data-side {
+    order: 1;
+  }
+
+  .bp-visual-side {
+    order: 2;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+  }
+
+  .bp-image-frame {
+    width: 100%;
+    height: 400px;
+    margin: 0 auto;
+  }
+
+  .bp-secondary-frame {
+    display: none; /* Hide secondary image on mobile */
+  }
+
+  .bp-main-title {
+    font-size: clamp(2rem, 8vw, 3rem);
+    margin-bottom: 30px;
+  }
+
+  .bp-text {
+    font-size: 1rem;
+    max-width: 100%;
+    margin-bottom: 40px;
+  }
+
+  .bp-features {
+    gap: 15px;
+  }
+
+  .feat-row {
+    padding-bottom: 10px;
+  }
+
+  .bp-header {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-blueprint {
+    padding: 60px 4% 30px;
+  }
+
+  .bp-image-frame {
+    height: 250px;
+  }
+
+  .bp-secondary-frame {
+    width: 180px;
+    height: 220px;
+  }
+
+  .bp-main-title {
+    font-size: clamp(1.8rem, 10vw, 2.5rem);
+  }
+}
