@@ -182,6 +182,19 @@
   padding-left: 8px; 
 }
 
+.support-link {
+  display: block;
+  color: var(--gt-text-muted);
+  font-size: 0.85rem;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.support-link a {
+  display: inline;
+  margin-bottom: 0;
+}
+
 /* --- LEVEL 4: BOTTOM --- */
 .gt-bottom-bar {
   margin-top: auto;

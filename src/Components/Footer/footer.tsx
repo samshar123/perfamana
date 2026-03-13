@@ -25,16 +25,17 @@ const Footer: React.FC = () => {
           <div className="gt-contact-col">
             <span className="gt-label">HEAD  OFFICE</span>
             <address className="gt-address">
-              Rise TBI, Arrekode, <br />
-              Malappuram, Kerala 673639
+              HH CUSTOM PVT LTD, <br />
+              7/133 A, B, KOLATHARA PO<br />
+              CALICUT - 673655
             </address>
           </div>
           <div className="gt-social-col">
             <span className="gt-label">CONNECT  SOCIAL</span>
             <div className="gt-social-links">
-              <a href="https://instagram.com/samshar.dotco" target="_blank">INSTAGRAM</a>
-              <a href="https://linkedin.com/in/samshar-for-marketing" target="_blank">LINKEDIN</a>
-              <a href="https://wa.me/917306096088" target="_blank">WHATSAPP</a>
+              <a href="https://www.instagram.com/perfamana/" target="_blank">INSTAGRAM</a>
+              <a href="https://www.linkedin.com/in/perfamana-calicut-767bb7308/" target="_blank">LINKEDIN</a>
+              <a href="https://www.facebook.com/HHcustomss" target="_blank">FACEBOOK</a>
             </div>
           </div>
         </div>
@@ -52,7 +53,7 @@ const Footer: React.FC = () => {
           <div className="gt-map-wrap">
             {/* Embedded Google Map */}
             <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125218.41168541908!2d75.746197!3d11.258753!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba65938563d4747%3A0x321557147a375a2!2sKozhikode%2C%20Kerala!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3913.0!2d75.8189009!3d11.1981609!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba65a1a0a5345b5%3A0x85792f383ef1925c!2sPERFAMANA!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
               className="gt-iframe"
               loading="lazy"
             ></iframe>
@@ -84,8 +85,8 @@ const Footer: React.FC = () => {
           </div> */}
           <div className="gt-nav-col">
             <h4 className="gt-nav-title">SUPPORT</h4>
-            <a href="mailto:info@perfamana.com" className="support-link">EMAIL</a>
-            <a href="https://wa.me/917306096088" target="_blank" className="support-link">PHONE</a>
+            <span className="support-link">Email: <a href="mailto:hhcustomsindia@gmail.com">hhcustomsindia@gmail.com</a></span>
+            <span className="support-link">Phone: <a href="https://wa.me/918111888790" target="_blank" rel="noopener noreferrer">8111888790</a>, <a href="https://wa.me/918111888791" target="_blank" rel="noopener noreferrer">8111888791</a></span>
           </div>
         </div>
 

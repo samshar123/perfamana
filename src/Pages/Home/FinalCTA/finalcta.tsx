@@ -94,7 +94,7 @@ const FinalCTA: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.5 }}
           >
             <a
-              href="https://wa.me/917306096088"
+              href="https://wa.me/8111888790"
               target="_blank"
               rel="noreferrer"
               className="fcta-whatsapp-btn"
