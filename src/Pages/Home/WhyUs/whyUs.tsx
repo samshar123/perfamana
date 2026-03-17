@@ -8,7 +8,7 @@ const WhyUs: React.FC = () => {
   const [features, setFeatures] = useState<WhyUsFeature[]>([]);
   const [loading, setLoading] = useState(true);
 
-  // Fetch Why Us featuress from API
+  // Fetch Why Us features from API
   useEffect(() => {
     const fetchFeatures = async () => {
       try {
