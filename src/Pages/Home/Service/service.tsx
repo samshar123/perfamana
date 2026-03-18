@@ -43,7 +43,8 @@ const ServiceSection: React.FC = () => {
   // Calculate how much we need to scroll to show all slides
   // If we have 1 visible slide at a time, we need to scroll: (totalSlides - 1) * 100%
   const scrollDistance = `-${(totalSlides - 1) * 100}%`;
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", scrollDistance]);
+  // Stop horizontal scrolling at 40% for much smoother, gradual movement on Linux
+  const x = useTransform(scrollYProgress, [0, 0.4], ["0%", scrollDistance]);
 
   if (loading) {
     return (

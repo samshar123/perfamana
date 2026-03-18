@@ -9,7 +9,7 @@
 
 .hz-container {
   position: relative;
-  height: 500vh;
+  height: 200vh;
   background: var(--bg-white);
   /* Changed from #050505 */
 }
