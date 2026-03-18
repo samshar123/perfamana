@@ -57,9 +57,8 @@ const Landing: React.FC = () => {
     viewportRef.current?.style.setProperty("--split", `${val}%`);
   };
 
-  // Apply large image class only for AESTHETICS slide (index 2)
-  const imgBoxClass =
-    index === 2 ? "pf-img-box pf-img-box--large" : "pf-img-box";
+  // Use same class for all slides
+  const imgBoxClass = "pf-img-box";
 
   return (
     <section ref={viewportRef} className="pf-viewport">

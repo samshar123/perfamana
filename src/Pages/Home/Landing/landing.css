@@ -146,30 +146,6 @@
   object-fit: contain;
 }
 
-/* ─────────────────────────────────────────────────────
-   LARGE IMAGE BOX  —  AESTHETICS slide (index 2)
-   Uses flex-grow:1 to claim ALL remaining vertical
-   space below the desc, then image fills that space.
-───────────────────────────────────────────────────── */
-.pf-img-box--large {
-  flex: 1 1 auto;        /* grow to fill all leftover height */
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: visible;
-  padding: 10px 0 80px;  /* 80px bottom padding clears the slider */
-  box-sizing: border-box;
-}
-
-.pf-img-box--large img {
-  max-width: 85%;
-  max-height: 100%;
-  width: auto;
-  height: 100%;
-  object-fit: contain;
-}
-
 .neon-saturate { filter: saturate(1.5) contrast(1.1) drop-shadow(0 0 35px var(--red)); }
 
 .light-mode {
