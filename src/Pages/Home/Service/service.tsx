@@ -37,14 +37,7 @@ const ServiceSection: React.FC = () => {
     target: containerRef,
   });
 
-  // Calculate scroll distance dynamically based on number of services
-  // Total slides = services + 1 (promo slide)
-  const totalSlides = services.length + 1;
-  // Calculate how much we need to scroll to show all slides
-  // If we have 1 visible slide at a time, we need to scroll: (totalSlides - 1) * 100%
-  const scrollDistance = `-${(totalSlides - 1) * 100}%`;
-  // Stop horizontal scrolling at 40% for much smoother, gradual movement on Linux
-  const x = useTransform(scrollYProgress, [0, 0.4], ["0%", scrollDistance]);
+ const x = useTransform(scrollYProgress, [0, 1], ["0%", "-90%"]);
 
   if (loading) {
     return (
