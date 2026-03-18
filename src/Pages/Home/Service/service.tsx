@@ -45,10 +45,6 @@ const ServiceSection: React.FC = () => {
     target: containerRef,
   });
 
-  // Calculate scroll distance dynamically based on number of services and window width
-  const totalSlides = services.length + 1;
-  const scrollDistance = `-${(totalSlides - 1) * 100}%`;
-  
   // Responsive scroll distance based on screen size
   const getScrollEnd = () => {
     if (windowWidth <= 768) return "-88%"; // Mobile
