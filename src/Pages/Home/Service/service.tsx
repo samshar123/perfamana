@@ -37,7 +37,7 @@ const ServiceSection: React.FC = () => {
     target: containerRef,
   });
 
- const x = useTransform(scrollYProgress, [0, 1], ["0%", "-90%"]);
+ const x = useTransform(scrollYProgress, [0, 1], ["0%", "-84%"]);
 
   if (loading) {
     return (
