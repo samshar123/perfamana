@@ -48,7 +48,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: -20vw;
+  margin-right: -8vw;
 }
 
 /* --- THE NEW MODERN CARD --- */
@@ -385,9 +385,17 @@
 }
 
 /* Responsive */
+@media (max-width: 1024px) {
+  .hz-slide {
+    margin-right: 10vw;
+  }
+}
 @media (max-width: 768px) {
   .hz-modern-card {
     padding: 20px;
+  }
+  .hz-slide {
+    margin-right: 10vw;
   }
 
   .hz-image-section {

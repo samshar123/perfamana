@@ -10,6 +10,14 @@ const ServiceSection: React.FC = () => {
   const navigate = useNavigate();
   const [services, setServices] = useState<Service[]>([]);
   const [loading, setLoading] = useState(true);
+  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1024);
+
+  // Update window width on resize
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // Fetch services from API
   useEffect(() => {
@@ -37,7 +45,18 @@ const ServiceSection: React.FC = () => {
     target: containerRef,
   });
 
- const x = useTransform(scrollYProgress, [0, 1], ["0%", "-84%"]);
+  // Calculate scroll distance dynamically based on number of services and window width
+  const totalSlides = services.length + 1;
+  const scrollDistance = `-${(totalSlides - 1) * 100}%`;
+  
+  // Responsive scroll distance based on screen size
+  const getScrollEnd = () => {
+    if (windowWidth <= 768) return "-88%"; // Mobile
+    if (windowWidth <= 1024) return "-88%"; // Tablet
+    return "-85%"; // Desktop
+  };
+  
+ const x = useTransform(scrollYProgress, [0, 1], ["0%", getScrollEnd()]);
 
   if (loading) {
     return (
