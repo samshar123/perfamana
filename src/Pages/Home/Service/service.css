@@ -37,17 +37,18 @@
 
 .hz-track {
   display: flex;
-  padding-left: 5vw;
+  padding-left: 0vw;
   z-index: 10;
 }
 
 .hz-slide {
   flex-shrink: 0;
-  width: 90vw;
+  width: 75vw;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-right: -20vw;
 }
 
 /* --- THE NEW MODERN CARD --- */
@@ -325,6 +326,7 @@
   align-items: center;
   padding: 50px;
   position: relative;
+
   box-shadow: 0 20px 40px rgba(227, 24, 55, 0.15);
 }
 

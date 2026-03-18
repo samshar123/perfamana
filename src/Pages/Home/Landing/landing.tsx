@@ -4,8 +4,8 @@ import img1 from "../../../../public/Images/Home/ford1-Photoroom.png";
 import img2 from "../../../../public/Images/Home/ford2.png";
 import img3 from "../../../../public/Images/Home/polo2.png";
 import img4 from "../../../../public/Images/Home/polo1.png";
-import img5 from "../../../../public/Images/Home/car1.webp";
-import img6 from "../../../../public/Images/Home/car2.webp";
+import img6 from "../../../../public/Images/Home/car1.webp";
+import img5 from "../../../../public/Images/Home/car2.webp";
 import "./landing.css";
 
 const carData = [
