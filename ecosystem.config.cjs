@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: "perfamana",
+      name: "perfamana-frontend",
       script: "server.js",
       env: {
         PORT: 3010,
