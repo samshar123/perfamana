@@ -6,6 +6,7 @@ import { fileURLToPath } from "node:url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const PORT = process.env.PORT || 3010;
+const HOST = process.env.HOST || "127.0.0.1";
 const DIST_DIR = path.join(__dirname, "dist");
 
 const MIME_TYPES = {
@@ -58,6 +59,6 @@ const server = http.createServer((req, res) => {
   });
 });
 
-server.listen(PORT, () => {
-  console.log(`perfamana server running on port ${PORT}`);
+server.listen(PORT, HOST, () => {
+  console.log(`perfamana server running on http://${HOST}:${PORT}`);
 });
