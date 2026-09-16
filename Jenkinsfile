@@ -4,7 +4,7 @@ pipeline {
     environment {
         SERVER_IP    = '72.62.228.151'
         DEPLOY_USER  = 'crono'
-        DEPLOY_PATH  = '/home/crono/perfamana_backend'
+        DEPLOY_PATH  = '/home/crono/perfamana'
         GIT_BRANCH   = 'main'
         PM2_APP_NAME = 'perfamana-frontend'
     }
