@@ -4,7 +4,7 @@ pipeline {
     environment {
         DEPLOY_HOST = "72.62.228.151"
         DEPLOY_USER = "crono"
-        DEPLOY_PATH = "/home/crono/perfamana"
+        DEPLOY_PATH = "/home/crono/perfamana-stack/perfamana"
         PM2_APP_NAME = "perfamana-frontend"
         VITE_API_BASE_URL = "https://api.perfamana.com/api"
         HEALTH_CHECK_URL = "http://localhost:3010/"
