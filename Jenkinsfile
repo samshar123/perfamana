@@ -6,7 +6,7 @@ pipeline {
         DEPLOY_USER  = 'crono'
         DEPLOY_PATH  = '/home/crono/perfamana_backend'
         GIT_BRANCH   = 'main'
-        PM2_APP_NAME = 'perfamana'
+        PM2_APP_NAME = 'perfamana-frontend'
     }
 
     stages {

@@ -4,7 +4,7 @@ module.exports = {
       name: "perfamana",
       script: "server.js",
       env: {
-        PORT: 3000,
+        PORT: 3010,
         NODE_ENV: "production",
       },
       instances: 1,
